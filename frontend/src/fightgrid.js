@@ -66,9 +66,9 @@ class JobActionCell extends React.Component {
                             timestamp: combatEvent.timestamp, by: this.props.job.code, ability: action
                         })
                     }}/>
-                    <span className="cancelAdd" onclick={() => this.setState({addOverlayVisible: false})}>-</span>
+                    <span className="action cancelAdd" onClick={() => this.setState({addOverlayVisible: false})}>&#8854;</span>
                 </div> :
-                <span className="add" onClick={() => this.setState({addOverlayVisible: true})}>+</span>}
+                <span className="action add" onClick={() => this.setState({addOverlayVisible: true})}>&#8853;</span>}
         </span>;
     }
 }

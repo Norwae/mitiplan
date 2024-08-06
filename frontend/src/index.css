@@ -60,3 +60,9 @@ table#actionGrid {
     outline: medium solid greenyellow;
     border-radius: 4px;
 }
+
+span.action {
+    font-size: 24pt;
+    font-weight: bold;
+    text-align: center;
+}
