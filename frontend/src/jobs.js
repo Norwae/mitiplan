@@ -17,19 +17,18 @@ const a = (name, atLevel, cooldownSeconds, icon, charges, evolution): Defensive 
 const lsi = (uuid) => `https://lds-img.finalfantasyxiv.com/d/${uuid}.png`
 
 const tankRole = [
-    a("Rampart", 8, 90),
-    a("Provoke", 15, 30),
-    a("Reprisal", 22, 60),
+    a("Provoke", 15, 30, lsi("2b45fea903bcf1edd9e08110cf95e8bba9a73c0d")),
+    a("Reprisal", 22, 60, lsi("6b83d9368623d5cd20a426d26916021b59a14963")),
 ]
 const healerRole = [
     a("Esuna", 10, 2.5, lsi("2a6603bc786d73eb3829141482b3d5be5d484199")),
 ]
 const meleeRole = [
-    a("Feint", 22, 90),
+    a("Feint", 22, 90, lsi("84c26a86cbbb8a599e5a2441cebcd33b0064bf07")),
 ]
 const rangedRole = []
 const casterRole = [
-    a("Addle", 8, 90),
+    a("Addle", 8, 90, lsi("b45e688d81b5607246600f904aac008364db0d1e")),
 ]
 
 function job(code: string, friendlyName: string, role: Defensive[], ...rest: Defensive[]): Job {
@@ -38,29 +37,24 @@ function job(code: string, friendlyName: string, role: Defensive[], ...rest: Def
 
 export const jobs = [
     job("DRK", "Dark Knight", tankRole,
-        a("Shadow Wall", 38, 120, null, 1, a(
-            "Shadowed Vigil", 92, 120
-        )),
-        a("Dark Mind", 45, 60),
-        a("Living Dead", 50, 300),
-        a("The blackest night", 70, 15),
-        a("Dark Missionary", 75, 90),
-        a("Oblation", 82, 60, 2)
+        a("Living Dead", 50, 300, lsi("968fc4ccd880ca468fff7b34680e793a80ffdab1")),
+        a("Dark Missionary", 75, 90, lsi("1dc1a1d830e5355e2cd251531e85932c24ba1b8d")),
     ),
     job("GNB", "Gunbreaker", tankRole,
-        a("Camouflage", 6, 90),
-        a("Nebula", 38, 120, null, 1,
-            a("Great Nebula", 92, 120)
-        ),
-        a("Aurora", 45, 60),
-        a("Superbolide", 50, 360),
-        a("Heart of Light", 64, 90, null, 1,
-            a("Heart of Corundum", 82, 25)
-        ),
-        a("Heart of Stone", 68, 25),
+        a("Superbolide", 50, 360, lsi("58257f726f8a2f793622a654e5b0b2df36b372ad")),
+        a("Heart of Light", 64, 90, lsi("04bbce4afc048a15cdccdd0495e679f90b115963"), 1,
+            a("Heart of Corundum", 82, 25, lsi("493de7202ca9b1e4bed75fdd4e5b1e7a8c61d58a"))
+        )
     ),
-    job("PLD", "Paladin", tankRole),
-    job("WAR", "Warrior", tankRole),
+    job("PLD", "Paladin", tankRole,
+        a("Hallowed Ground", 50, 420, lsi("249bf48c39ec44b9b32f0681ea256850ed6aa8f8")),
+        a("Divine Veil", 56, 90, lsi("495faab61344751872ca0867e2d5e59b04c6940c")),
+        a("Passage of Arms", 70, 120, lsi("b570dfda793945b3bb8fddef02b1a865b8a04b32"))
+    ),
+    job("WAR", "Warrior", tankRole,
+        a("Holmgang", 42, 240, lsi("91b5673b1dfb08c80d7b8fc2bdc936f46906317f")),
+        a("Shake It Off", 68, 90, lsi("f71e2c46512c1e937c0ff316be668d853869c637"))
+    ),
     job("AST", "Astrologian", healerRole),
     job("SCH", "Scholar", healerRole,
         a("Whispering Dawn", 20, 60, lsi("161dc95f27e69fb5bd4caecfdeab022e3560193d")),
@@ -79,16 +73,32 @@ export const jobs = [
     job("SGE", "Sage",healerRole),
     job("WHM", "White Mage", healerRole),
     job("DRG", "Dragoon", meleeRole),
-    job("MNK", "Monk", meleeRole),
+    job("MNK", "Monk", meleeRole,
+        a("Mantra", 42, 90, lsi("576fee56715e5d7a353c36daab4c4e3a5546738e"))
+    ),
     job("NIN", "Ninja", meleeRole),
-    job("RPR", "Reaper", meleeRole),
+    job("RPR", "Reaper", meleeRole,
+        a("Arcane Crest", 40, 30, lsi("9977fdbbf70443f9f31f4868cba97138fbec5460"))
+    ),
     job("SAM", "Samurai", meleeRole),
     job("VPR", "Viper", meleeRole),
     job("BLM", "Black Mage", casterRole),
-    job("RDM", "Red Mage", casterRole),
-    job("PIC", "Pictomancer", casterRole),
-    job("SMN", "Summoner", casterRole),
-    job("BRD", "Bard", rangedRole),
+    job("RDM", "Red Mage", casterRole,
+        a("Magicked Barrier", 86, 120, lsi("5c95999b6491dcc5714cd7f926b03fc56b5c88dc"))
+    ),
+    job("PIC", "Pictomancer", casterRole,
+        a("Tempura Grassa", 88, 120, lsi("ed684b430814130c6917a00018cd5e400430e210"))
+        ),
+    job("SMN", "Summoner", casterRole,
+        a("Radiant Aegis", 2, 60, lsi("926e42e9a30e357e4214c95427cd1dd1592974c5"), 1,
+            a("Radiant Aegis", 88, 60, lsi("926e42e9a30e357e4214c95427cd1dd1592974c5"), 2)
+        )
+    ),
+    job("BRD", "Bard", rangedRole,
+        a("The Warden's Paean", 35, 45, lsi("e2358f71a46fe53449fdff7c7e42bb99c51987ca")),
+        a("Troubadour", 62, 90, lsi("6618d7a1a2770ce51edecf1c26a2937b5fc95963")),
+        a("Nature's Minne", 66, 120, lsi("03c3c2cabca1caf35d1c9a6ef8d0fe150e03762c"))
+    ),
     job("MCH", "Machinist", rangedRole),
     job("DNC", "Dancer", rangedRole),
 ];

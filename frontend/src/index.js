@@ -114,15 +114,15 @@ class JobActionCell extends React.Component {
             return action
         })
         const potentialActions = evolvedActions.filter(action => {
-            const found = actions.find(({timestamp, by, ability}) => {
+            const found = actions.filter(({timestamp, by, ability}) => {
                 const deltaT = timestamp - combatEvent.timestamp
                 return by === job.code &&
                     ability === action &&
                     deltaT >= -ability.cooldownSeconds &&
                     deltaT <= ability.cooldownSeconds
-            })
+            }).length
 
-            return !found
+            return action.charges > found
         })
         return <span>{
             myActions.map(action => {
@@ -130,11 +130,7 @@ class JobActionCell extends React.Component {
                 return <img key={job.code + "_" + name} src={icon} alt={name} width="32" height="32"
                             onClick={() => this.props.removeHandler(action)}/>
             })
-
         }
-            <span className="add" onClick={() =>
-                this.setState({addOverlayVisible: true})
-            }>+</span>
             {
                 this.state.addOverlayVisible ?
                     <div className="addOverlay">{
@@ -151,8 +147,10 @@ class JobActionCell extends React.Component {
                                         }
                                         }/>
                         })
-                    }</div> :
-                    ""
+                    }
+                        <span className="cancelAdd" onclick={() => this.setState({addOverlayVisible: false})}>-</span>
+                    </div> :
+                    <span className="add" onClick={() => this.setState({addOverlayVisible: true})}>+</span>
             }
         </span>;
     }
