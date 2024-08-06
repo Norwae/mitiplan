@@ -70,7 +70,7 @@ export class FightActionGrid extends React.Component {
                 <th>Action</th>
                 <th>Timestamp</th>
                 <th>Type</th>
-                <th>Raw Damage</th>
+                <th>Damage</th>
                 {this.props.jobs.map(({code, friendlyName}) => <th key={code}>{friendlyName}</th>)}
             </tr>
             </thead>
