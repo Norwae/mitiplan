@@ -76,7 +76,14 @@ export const jobs = [
         a("Seraphism", 100, 180, lsi("3660e0317ed2aba78b7cfdc526dd174efa94d88d"))
     ),
     job("SGE", "Sage",healerRole),
-    job("WHM", "White Mage", healerRole),
+    job("WHM", "White Mage", healerRole,
+        a("Presence of Mind", 30, 120, lsi("7be14bf07b21fa5c78cd7f7891279704da6cadb9")),
+        a("Asylum", 52, 90, lsi("cf3242dc922e88211cb5b2c4aa67f9ae79fb88fb")),
+        a("Divine Benison", 66, 30, lsi("065d9df35159a3bc53d59984a18b35581b442a73")),
+        a("Plenary Indulgence", 70, 60, lsi("2144617daa9bac9ea7bc1f063a9e0cd033fcd363")),
+        a("Temperance", 80, 120, lsi("78e099cba536b64fe978d05487c51b28a66f29df")),
+        a("Liturgy of the Bell", 90, 180, lsi("4d31a93f520e700ac70ab1604bdb6811f124ebb4")),
+    ),
     job("DRG", "Dragoon", meleeRole),
     job("MNK", "Monk", meleeRole,
         a("Mantra", 42, 90, lsi("576fee56715e5d7a353c36daab4c4e3a5546738e"))

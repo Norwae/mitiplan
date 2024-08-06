@@ -1,28 +1,13 @@
 import React from "react";
 
-class SelectedActions extends React.Component {
+class SelectableActions extends React.Component {
     render() {
         return <span>{this.props.actions.map(action => {
             const {icon, name} = action.ability
-            return <img key={name} src={icon} alt={name} width="32" height="32"
-                        onClick={() => this.props.removeHandler(action)}/>
+            return <img key={name} src={icon} alt={name} width="32" height="32" title={name}
+                        onClick={() => this.props.handler(action)}/>
         })}</span>
     }
-}
-
-class PotentialActions extends React.Component {
-
-    render() {
-        return <span>{
-            this.props.actions.map(action => {
-                const {icon, name} = action
-                return <img key={name} src={icon} alt={name} width="32" height="32"
-                            onClick={() => {
-                                this.props.addHandler(action)
-                            }}/>
-            })}</span>
-    }
-
 }
 
 class JobActionCell extends React.Component {
@@ -55,16 +40,18 @@ class JobActionCell extends React.Component {
             }).length
 
             return action.charges > found
-        })
+        }).map(action => ({
+            timestamp: combatEvent.timestamp,
+            by: this.props.job.code,
+            ability: action
+        }))
         return <span>
-            <SelectedActions actions={myActions} removeHandler={this.props.removeHandler}/>
+            <SelectableActions actions={myActions} handler={this.props.removeHandler}/>
             {this.state.addOverlayVisible ?
                 <div className="addOverlay">
-                    <PotentialActions actions={potentialActions} addHandler={(action) => {
+                    <SelectableActions actions={potentialActions} handler={action => {
+                        this.props.addHandler(action)
                         this.setState({addOverlayVisible: false})
-                        this.props.addHandler({
-                            timestamp: combatEvent.timestamp, by: this.props.job.code, ability: action
-                        })
                     }}/>
                     <span className="action cancelAdd" onClick={() => this.setState({addOverlayVisible: false})}>&#8854;</span>
                 </div> :
