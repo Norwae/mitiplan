@@ -62,6 +62,8 @@ table#actionGrid {
 }
 
 span.action {
+    position: relative;
+    top: -4px;
     font-size: 24pt;
     font-weight: bold;
     text-align: center;
