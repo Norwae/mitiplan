@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import type {Defensive, Job} from "./jobs";
+import type {Ability, Job} from "./jobs";
 import {jobs} from "./jobs";
 import {JobBar} from "./jobbar";
 import {FightSelector} from "./fightselector";
