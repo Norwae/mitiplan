@@ -1,5 +1,5 @@
 import React from "react";
-import type {Defensive} from "./jobs";
+import type {Ability} from "./jobs";
 
 export class FightSelector extends React.Component {
 
@@ -19,5 +19,5 @@ export class FightSelector extends React.Component {
 export interface CombatAction {
     timestamp: number,
     by: string,
-    ability: Defensive
+    ability: Ability
 }

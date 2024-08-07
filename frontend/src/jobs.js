@@ -1,19 +1,27 @@
-export interface Defensive {
+export interface Ability {
+    code: string,
     name: string,
     atLevel: number,
     cooldownSeconds: number,
     charges: number,
-    evolution?: Defensive,
+    evolution?: Ability,
     icon?: string
 }
 
 export interface Job {
     code: string,
     friendlyName: string,
-    actions: Defensive[]
+    actions: Ability[]
 }
 
-const a = (name, atLevel, cooldownSeconds, icon, charges, evolution): Defensive => ({ name, atLevel, cooldownSeconds, evolution, icon, charges: charges || 1 })
+const a = (name, atLevel, cooldownSeconds, icon, charges, evolution): Ability => ({
+    name,
+    atLevel,
+    cooldownSeconds,
+    evolution,
+    icon,
+    charges: charges || 1
+})
 const lsi = (uuid) => `https://lds-img.finalfantasyxiv.com/d/${uuid}.png`
 
 const tankRole = [
@@ -31,8 +39,21 @@ const casterRole = [
     a("Addle", 8, 90, lsi("b45e688d81b5607246600f904aac008364db0d1e")),
 ]
 
-function job(code: string, friendlyName: string, role: Defensive[], ...rest: Defensive[]): Job {
-    return { code, friendlyName, actions: role.concat(rest) }
+function job(code: string, friendlyName: string, role, ...rest): Job {
+    return {
+        code, friendlyName, actions: role.concat(rest).map(d => {
+            let evolution = d.evolution;
+            if (evolution) {
+                evolution = {code: code + "_" + evolution.atLevel, ...evolution}
+            }
+
+            return {
+                code: code + "_" + d.atLevel,
+                evolution,
+                ...d
+            }
+        })
+    };
 }
 
 export const jobs = [
@@ -75,7 +96,7 @@ export const jobs = [
         a("Expedient", 90, 120, lsi("023d8827b75a8d5d6682a81acf1016371366f8e8")),
         a("Seraphism", 100, 180, lsi("3660e0317ed2aba78b7cfdc526dd174efa94d88d"))
     ),
-    job("SGE", "Sage",healerRole,
+    job("SGE", "Sage", healerRole,
         a("Kerachole", 50, 30, lsi("b49859cbf63de26b230527650742576590166760")),
         a("Zoe", 56, 90, lsi("958000045b75c90c1ce059d11d2f2ed488d72a65")),
         a("Taurochole", 62, 45, lsi("958000045b75c90c1ce059d11d2f2ed488d72a65")),
@@ -109,7 +130,7 @@ export const jobs = [
     ),
     job("PIC", "Pictomancer", casterRole,
         a("Tempura Grassa", 88, 120, lsi("ed684b430814130c6917a00018cd5e400430e210"))
-        ),
+    ),
     job("SMN", "Summoner", casterRole,
         a("Radiant Aegis", 2, 60, lsi("926e42e9a30e357e4214c95427cd1dd1592974c5"), 1,
             a("Radiant Aegis", 88, 60, lsi("926e42e9a30e357e4214c95427cd1dd1592974c5"), 2)
@@ -127,4 +148,5 @@ export const jobs = [
 function jobByCode(code: string): Job {
     return jobs.find(j => j.code === code)
 }
+
 jobs.byCode = jobByCode
