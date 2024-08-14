@@ -28,7 +28,7 @@ export class PersistenceModel {
                 }))
             }
         }
-        await fetch(backend, {
+        const response = await fetch(backend, {
             method: "POST", body: JSON.stringify(body)
         })
         const txt = await response.text();

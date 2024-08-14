@@ -65,12 +65,21 @@ class Application extends React.Component {
         this.setState({fight})
     }
 
+    async export() {
+        if (this.state.party) {
+            let key = await new PersistenceModel(this.state.party, this.state.actions, this.state.fight).store()
+            window.location.hash = key
+            await navigator.clipboard.writeText(window.location)
+        }
+    }
+
     render() {
         const canRender = this.state.party && this.state.fight;
         return <div id="approot">
             <div id="headerbar">
                 <FightSelector fights={fights} onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
                 <JobBar jobs={jobs} onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
+                <button onClick={() => this.export()}>🔗</button>
             </div>
             {canRender ? <FightActionGrid fight={this.state.fight} jobs={this.state.party} actions={this.state.actions}
                                           addHandler={ca => this.addAction(ca)}
