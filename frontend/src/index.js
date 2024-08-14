@@ -11,8 +11,8 @@ import {fights} from "./fights"
 
 import "./index.css"
 import {CombatAction} from "./fightgrid";
+import {PersistenceModel} from "./persistence";
 
-const backend = " https://oyw5rhxoy4.execute-api.us-east-1.amazonaws.com/mitisheet-backend"
 
 class Application extends React.Component {
 
@@ -29,22 +29,13 @@ class Application extends React.Component {
         if (props.plan) {
             const plan = props.plan.substring(1)
             console.log("Will set initial plan " + plan)
-            fetch(backend, {
-                method: "POST",
-                body: `{"Lookup": "${plan}"}`
-            }).then((value) => value.text().then(txt => {
-                    let { code, actions, party } = JSON.parse(txt);
-                    actions = actions.map(({timestamp, ability}) => {
-                        let job = jobs.byCode(ability.job)
-                        return new CombatAction(timestamp, job.code, job.findAction(ability.level));
-                    })
-                    party = party.map(it => jobs.byCode(it))
-                    let fight = fights.byCode(code);
+            PersistenceModel.load(plan)
+                .then(({party, actions, fight}) => {
                     this.setState({
-                        actions, fight, party
+                        party, fight, actions
                     })
                 })
-            ).catch(console.log)
+                .catch(console.log)
         } else {
             console.log("No initial plan, start empty")
         }

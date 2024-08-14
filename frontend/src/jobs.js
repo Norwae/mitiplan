@@ -1,5 +1,4 @@
 export interface Ability {
-    code: string,
     name: string,
     atLevel: number,
     cooldownSeconds: number,
@@ -53,7 +52,6 @@ function job(code: string, friendlyName: string, role, ...rest): Job {
         }
 
         return {
-            code: code + "_" + d.atLevel,
             evolution,
             ...d
         }

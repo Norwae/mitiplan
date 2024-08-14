@@ -3,6 +3,9 @@ import type {Ability} from "./jobs";
 
 
 export class CombatAction {
+    timestamp: number
+    by: string
+    ability: Ability
 
     constructor(timestamp: number, by: string, ability: Ability) {
         this.timestamp = timestamp
@@ -72,7 +75,7 @@ class JobActionCell extends React.Component {
     }
 }
 
-const formatTime = (seconds) => Math.floor(seconds / 60) + ":" + (seconds % 60)
+const formatTime = (seconds) => Math.floor(seconds / 60) + ":" + ("0" + (seconds % 60)).slice(-2)
 
 export class FightActionGrid extends React.Component {
     render() {

@@ -5,7 +5,7 @@ export interface Fight {
     events: CombatEvent[]
 }
 
-export type DamageType = "MAGIC" | "PHYSICAL" | "SPECIAL" | "NONE" | "AVOIDABLE"
+export type DamageType = "MAGIC" | "PHYSICAL" | "SPECIAL" | "AVOIDABLE"
 
 export interface CombatEvent {
     timestamp: number,
@@ -24,7 +24,7 @@ function e(timestamp: number, name: string, rawDamage: number = 0, damageType: D
 
 export const fights: Fight[] = [
     f("Black Cat (M1S)", "M1S", 100,
-        e(0, "Start of Fight", 0, "NONE"),
+        e(0, "Start of Fight"),
         e(15, "Quadruple Crossing", 130000, "PHYSICAL"),
         e(18, "Quadruple Crossing", 130000, "PHYSICAL"),
         e(21, "Quadruple Crossing"),
