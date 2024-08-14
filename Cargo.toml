@@ -17,6 +17,7 @@ base64 = "0.22"
 bytes = "1.7"
 
 lambda_runtime = "0.13"
+lambda_http = "0.13"
 
 ring = "0.17"
 

@@ -80,7 +80,7 @@ mod test {
     fn read_store(){
         let result: serde_json::Result<Operation> = serde_json::from_str(r#"{"Store": {"code": "M1S", "actions": [{"ability": {"job": "VPR", "level": 50}, "timestamp": 0}]}}"#);
         if let Ok(Operation::Store(fm)) = &result {
-            assert_eq!("M1S", fm.code);
+            assert_eq!(FightCode::M1S, fm.code);
             assert_eq!(Ability {
                 job: JobCode::VPR,
                 level: 50,
