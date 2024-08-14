@@ -15,9 +15,3 @@ export class FightSelector extends React.Component {
     }
 }
 
-
-export interface CombatAction {
-    timestamp: number,
-    by: string,
-    ability: Ability
-}

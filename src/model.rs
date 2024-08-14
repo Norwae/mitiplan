@@ -39,12 +39,14 @@ pub struct CombatAction {
 pub struct FightModel {
     pub key: Option<String>,
     code: FightCode,
+    party: Vec<JobCode>,
     actions: Vec<CombatAction>
 }
 
 impl FightModel {
     pub fn normalize(&mut self) {
         self.key = None;
+        self.party.sort_by_key(|job| *job as u32);
         self.actions.sort_by_key(|obj|
             obj.timestamp as u32 * 100000 +
                 obj.ability.job as u32 * 1000 +
@@ -54,6 +56,10 @@ impl FightModel {
 
     pub fn validate(self) -> Option<Self> {
         if self.actions.len() > 1000 {
+            return None
+        }
+
+        if self.party.len() > 8 {
             return None
         }
 

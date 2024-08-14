@@ -8,10 +8,16 @@ export interface Ability {
     icon?: string
 }
 
-export interface Job {
-    code: string,
-    friendlyName: string,
-    actions: Ability[]
+export class Job {
+    constructor(code: string, friendlyName: string, actions: Ability[]) {
+        this.code = code;
+        this.friendlyName = friendlyName;
+        this.actions = actions
+    }
+
+    findAction(level: number): Ability {
+        return this.actions.find(({atLevel}) => level === atLevel)
+    }
 }
 
 const a = (name, atLevel, cooldownSeconds, icon, charges, evolution): Ability => ({
@@ -40,20 +46,18 @@ const casterRole = [
 ]
 
 function job(code: string, friendlyName: string, role, ...rest): Job {
-    return {
-        code, friendlyName, actions: role.concat(rest).map(d => {
-            let evolution = d.evolution;
-            if (evolution) {
-                evolution = {code: code + "_" + evolution.atLevel, ...evolution}
-            }
+    return new Job(code, friendlyName, role.concat(rest).map(d => {
+        let evolution = d.evolution;
+        if (evolution) {
+            evolution = {code: code + "_" + evolution.atLevel, ...evolution}
+        }
 
-            return {
-                code: code + "_" + d.atLevel,
-                evolution,
-                ...d
-            }
-        })
-    };
+        return {
+            code: code + "_" + d.atLevel,
+            evolution,
+            ...d
+        }
+    }));
 }
 
 export const jobs = [

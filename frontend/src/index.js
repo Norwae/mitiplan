@@ -10,6 +10,9 @@ import type {Fight} from "./fights";
 import {fights} from "./fights"
 
 import "./index.css"
+import {CombatAction} from "./fightgrid";
+
+const backend = " https://oyw5rhxoy4.execute-api.us-east-1.amazonaws.com/mitisheet-backend"
 
 class Application extends React.Component {
 
@@ -17,8 +20,35 @@ class Application extends React.Component {
         super(props);
 
         this.state = {
-            party: props.party || null, fight: props.fight || fights[0], actions: props.actions || []
+            party: props.party || null,
+            fight: props.fight || fights[0],
+            actions: props.actions || [],
+            loading: !!props.plan
         }
+
+        if (props.plan) {
+            const plan = props.plan.substring(1)
+            console.log("Will set initial plan " + plan)
+            fetch(backend, {
+                method: "POST",
+                body: `{"Lookup": "${plan}"}`
+            }).then((value) => value.text().then(txt => {
+                    let { code, actions, party } = JSON.parse(txt);
+                    actions = actions.map(({timestamp, ability}) => {
+                        let job = jobs.byCode(ability.job)
+                        return new CombatAction(timestamp, job.code, job.findAction(ability.level));
+                    })
+                    party = party.map(it => jobs.byCode(it))
+                    let fight = fights.byCode(code);
+                    this.setState({
+                        actions, fight, party
+                    })
+                })
+            ).catch(console.log)
+        } else {
+            console.log("No initial plan, start empty")
+        }
+
     }
 
     addAction(action: CombatAction) {
@@ -62,6 +92,7 @@ class Application extends React.Component {
 }
 
 const rootElement = document.getElementById("root");
+const initialPlan = document.location.hash
 console.log(rootElement)
 const root = ReactDOM.createRoot(rootElement)
-root.render(<Application/>)
+root.render(<Application plan={initialPlan}/>)

@@ -1,4 +1,15 @@
 import React from "react";
+import type {Ability} from "./jobs";
+
+
+export class CombatAction {
+
+    constructor(timestamp: number, by: string, ability: Ability) {
+        this.timestamp = timestamp
+        this.by = by;
+        this.ability = ability
+    }
+}
 
 class SelectableActions extends React.Component {
     render() {
@@ -53,7 +64,8 @@ class JobActionCell extends React.Component {
                         this.props.addHandler(action)
                         this.setState({addOverlayVisible: false})
                     }}/>
-                    <span className="action cancelAdd" onClick={() => this.setState({addOverlayVisible: false})}>&#8854;</span>
+                    <span className="action cancelAdd"
+                          onClick={() => this.setState({addOverlayVisible: false})}>&#8854;</span>
                 </div> :
                 <span className="action add" onClick={() => this.setState({addOverlayVisible: true})}>&#8853;</span>}
         </span>;
