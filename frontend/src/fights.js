@@ -31,7 +31,7 @@ const parseDamageType = (str: string): DamageType => str === "Magical" ? "MAGIC"
 async function loadEvents(code: string): Promise<CombatEvent[]> {
     return new Promise((resolve, reject) => {
 
-        const rows = []
+        let rows = []
 
         const step = ({data}) => {
             rows.push({
@@ -42,12 +42,25 @@ async function loadEvents(code: string): Promise<CombatEvent[]> {
             })
         }
 
+        const complete = () => {
+            if (!rows[0] || rows[0].timestamp > 0) {
+                rows = [{
+                    timestamp: 0,
+                    name: "Pre-Pull",
+                    rawDamage: 0,
+                    damageType: "AVOIDABLE"
+                }].concat(rows)
+            }
+
+            resolve(rows)
+        }
+
 
         Papa.parse("/" + code + ".csv", {
             download: true,
             header: true,
             step,
-            complete: () => resolve(rows),
+            complete,
             error: reject
         })
     }).then(data => {
