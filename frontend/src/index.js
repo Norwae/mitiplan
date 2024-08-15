@@ -20,24 +20,16 @@ class Application extends React.Component {
         super(props);
 
         this.state = {
-            party: props.party || null,
-            fight: props.fight || fights[0],
-            actions: props.actions || [],
-            loading: !!props.plan
+            party: null,
+            fight: null,
+            fightEvents: [],
+            actions:[]
         }
 
         if (props.plan) {
-            const plan = props.plan.substring(1)
-            console.log("Will set initial plan " + plan)
-            PersistenceModel.load(plan)
-                .then(({party, actions, fight}) => {
-                    this.setState({
-                        party, fight, actions
-                    })
-                })
-                .catch(console.log)
+            this.reset()
         } else {
-            console.log("No initial plan, start empty")
+            this.setFight(props.fight || fights[0])
         }
 
     }
@@ -57,12 +49,24 @@ class Application extends React.Component {
             this.setState({
                 party
             })
-            console.log("Party set up", party)
         }
     }
 
-    setFight(fight: Fight) {
-        this.setState({fight})
+    async setFight(fight: Fight) {
+        const fightEvents = await fight.events()
+        this.setState({fight, fightEvents})
+    }
+
+    reset() {
+        const plan = props.plan.substring(1)
+        PersistenceModel.load(plan)
+            .then(({party, actions, fight}) => {
+                this.setState({
+                    party, actions
+                })
+                this.setFight(fight)
+            })
+            .catch(console.log)
     }
 
     async export() {
@@ -73,18 +77,27 @@ class Application extends React.Component {
         }
     }
 
+    canRender(): boolean {
+        return this.state.party && this.state.fightEvents
+    }
+
     render() {
-        const canRender = this.state.party && this.state.fight;
         return <div id="approot">
             <div id="headerbar">
                 <FightSelector fights={fights} onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
                 <JobBar jobs={jobs} onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
-                <button onClick={() => this.export()}>🔗</button>
+                <div className="persistenceControl">
+                    <button onClick={() => this.reset()}>↺</button>
+                    <button onClick={() => this.export()}>🔗</button>
+                </div>
             </div>
-            {canRender ? <FightActionGrid fight={this.state.fight} jobs={this.state.party} actions={this.state.actions}
+            {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party} actions={this.state.actions}
                                           addHandler={ca => this.addAction(ca)}
                                           removeHandler={ca => this.removeAction(ca)}/> :
-                <h1>No fight and party combination set </h1>
+                <div className="unreadyInfo">
+                    <b>No fight / Party selected</b>
+                    <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>
+                </div>
 
             }
         </div>

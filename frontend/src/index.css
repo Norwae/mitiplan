@@ -68,3 +68,18 @@ span.action {
     font-weight: bold;
     text-align: center;
 }
+
+.persistenceControl {
+    position: fixed;
+    top: 0pt;
+    right: 0pt;
+}
+
+.persistenceControl button {
+    font-size: 32pt;
+}
+
+.unreadyInfo {
+    text-align: center;
+    font-size: xxx-large;
+}

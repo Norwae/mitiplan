@@ -1,8 +1,60 @@
-export interface Fight {
-    name: string,
-    code: string,
-    levelSync: number,
-    events: CombatEvent[]
+const Papa = require("papaparse")
+
+export class Fight {
+    name: string
+    code: string
+    levelSync: number
+
+    constructor(name, code, levelSync) {
+        this.name = name
+        this.code = code
+        this.levelSync = levelSync
+
+        this.eventualEvents = loadEvents(code)
+    }
+
+    async events(): Promise<CombatEvent[]> {
+        return await this.eventualEvents
+    }
+}
+
+const parseTimestamp = (str: string): number => {
+    const [first, second] = str.split(":")
+    return parseInt(first) * 60 + parseInt(second)
+}
+
+const parseDamageType = (str: string): DamageType => str === "Magical" ? "MAGIC" :
+    str === "Physical" ? "PHYSICAL" :
+        str === "Special" ? "SPECIAL" :
+            "AVOIDABLE"
+
+async function loadEvents(code: string): Promise<CombatEvent[]> {
+    return new Promise((resolve, reject) => {
+
+        const rows = []
+
+        const step = ({data}) => {
+            rows.push({
+                timestamp: parseTimestamp(data.Time),
+                name: data.Attack,
+                rawDamage: parseInt(data.Damage.replace(",", "")),
+                damageType: parseDamageType(data.Type)
+            })
+        }
+
+
+        Papa.parse("/" + code + ".csv", {
+            download: true,
+            header: true,
+            step,
+            complete: () => resolve(rows),
+            error: reject
+        })
+    }).then(data => {
+        console.log(data)
+        return data
+    })
+
 }
 
 export type DamageType = "MAGIC" | "PHYSICAL" | "SPECIAL" | "AVOIDABLE"
@@ -14,25 +66,12 @@ export interface CombatEvent {
     damageType: DamageType
 }
 
-function f(name: string, code, levelSync: number, ...events: CombatEvent): Fight {
-    return {name, code, levelSync, events}
-}
-
-function e(timestamp: number, name: string, rawDamage: number = 0, damageType: DamageType = "AVOIDABLE") {
-    return {timestamp, name, rawDamage, damageType}
-}
-
 export const fights: Fight[] = [
-    f("Black Cat (M1S)", "M1S", 100,
-        e(0, "Start of Fight"),
-        e(15, "Quadruple Crossing", 130000, "PHYSICAL"),
-        e(18, "Quadruple Crossing", 130000, "PHYSICAL"),
-        e(21, "Quadruple Crossing"),
-        e(24, "Quadruple Crossing"),
-        e(33, "Biscuit Maker", 330000, "PHYSICAL"),
-        e(35, "Biscuit Maker", 330000, "PHYSICAL")
-    ),
-    f("Honey B. Lovely (M2S)", "M2S", 100)
+    new Fight("Black Cat (M1S)", "M1S", 100),
+    new Fight("Honey B Lovely (M2S)", "M2S", 100),
+    new Fight("Brute Bomber (M3S)", "M3S", 100),
+    new Fight("Wicked Thunder (M4S)", "M4S", 100)
 ]
 
 fights.byCode = (code) => fights.find((f) => f.code === code)
+
