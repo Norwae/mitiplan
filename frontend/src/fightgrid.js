@@ -98,7 +98,7 @@ export class FightActionGrid extends React.Component {
                     <td>{event.rawDamage > 0 ? event.rawDamage : ""}</td>
                     {this.props.jobs.map(job => {
                         return <td key={job.code}><JobActionCell combatEvent={event} job={job}
-                                                                 level={this.props.fight.levelSync}
+                                                                 level={this.props.levelSync}
                                                                  actions={this.props.actions}
                                                                  addHandler={this.props.addHandler}
                                                                  removeHandler={this.props.removeHandler}

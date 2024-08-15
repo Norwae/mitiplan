@@ -58,7 +58,7 @@ class Application extends React.Component {
     }
 
     reset() {
-        const plan = props.plan.substring(1)
+        const plan = this.props.plan.substring(1)
         PersistenceModel.load(plan)
             .then(({party, actions, fight}) => {
                 this.setState({
@@ -91,7 +91,8 @@ class Application extends React.Component {
                     <button onClick={() => this.export()}>🔗</button>
                 </div>
             </div>
-            {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party} actions={this.state.actions}
+            {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
+                                                 actions={this.state.actions} levelSync={this.state.fight.levelSync}
                                           addHandler={ca => this.addAction(ca)}
                                           removeHandler={ca => this.removeAction(ca)}/> :
                 <div className="unreadyInfo">

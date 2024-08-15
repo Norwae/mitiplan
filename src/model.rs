@@ -11,7 +11,7 @@ pub enum FightCode {
 pub enum JobCode {
     DRK, GNB, PLD, WAR,
     AST, SCH, SGE, WHM,
-    DRG, MKN, NIN, RPR, SAM, VPR,
+    DRG, MNK, NIN, RPR, SAM, VPR,
     BLM, RDM, PIC, SMN,
     BRD, MCH, DNC
 }
