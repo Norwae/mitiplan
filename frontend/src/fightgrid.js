@@ -90,8 +90,8 @@ export class FightActionGrid extends React.Component {
             </tr>
             </thead>
             <tbody>
-            {this.props.fight.map(event => {
-                return <tr key={"_" + event.timestamp}>
+            {this.props.fight.map((event, idx) => {
+                return <tr key={"_" + idx}>
                     <td>{event.name}</td>
                     <td>{formatTime(event.timestamp)}</td>
                     <td>{event.damageType !== "AVOIDABLE" ? event.damageType : ""}</td>

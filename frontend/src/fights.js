@@ -29,7 +29,7 @@ const parseDamageType = (str: string): DamageType => str === "Magical" ? "MAGIC"
             "AVOIDABLE"
 
 async function loadEvents(code: string): Promise<CombatEvent[]> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, error) => {
 
         let rows = []
 
@@ -61,11 +61,8 @@ async function loadEvents(code: string): Promise<CombatEvent[]> {
             header: true,
             step,
             complete,
-            error: reject
+            error
         })
-    }).then(data => {
-        console.log(data)
-        return data
     })
 
 }
