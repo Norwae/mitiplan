@@ -1,164 +1,164 @@
-Time,Attack,,Type,Damage,Tank 1,Tank 2,Healer 1,Healer 2,DPS 1,DPS 2,DPS 3,DPS 4
-00:16,Wrath of Zeus,,Magical,"158,000",,,,,,,,
-00:39,Bewitching Flight,,,,,,,,,,,
-00:50,Explosion,,,,,,,,,,,
-00:50,Electrifying Witch Hunt,,Physical,"126,000",,,,,,,,
-00:58,Witch Hunt,,Physical,"126,000",,,,,,,,
-00:58,Explosion,,,,,,,,,,,
-01:15,Narrowing Witch Hunt or Widening Witch Hunt,,,,,,,,,,,
-01:16,Witch Hunt,,Physical,"126,000",,,,,,,,
-01:20,Witch Hunt,,Physical,"126,000",,,,,,,,
-01:23,Witch Hunt,,Physical,"126,000",,,,,,,,
-01:27,Witch Hunt,,Physical,"126,000",,,,,,,,
-01:39,Wrath of Zeus,,Magical,"158,000",,,,,,,,
-01:51,Electrope Edge,,,,,,,,,,,
-01:58,Witchgleam,,,,,,,,,,,
-02:06,Symphony Fantastique,,,,,,,,,,,
-02:16,Sidewise Spark,,,,,,,,,,,
-02:16,Four Star or Eight Star,,Magical,"130,000",,,,,,,,
-02:24,Wicked Jolt,,Magical,"460,000",,,,,,,,
-02:27,Wicked Jolt,,Magical,"460,000",,,,,,,,
-02:39,Electrope Edge,,,,,,,,,,,
-02:46,Witchgleam,,Magical,"70,000",,,,,,,,
-02:48,Witchgleam,,Magical,"70,000",,,,,,,,
-02:49,Witchgleam,,Magical,"70,000",,,,,,,,
-02:51,Witchgleam,,Magical,"70,000",,,,,,,,
-02:54,Lightning Cage,,,,,,,,,,,
-03:02,Spark II,,Magical,"110,000",,,,,,,,
-03:11,Sidewise Spark,,,,,,,,,,,
-03:11,Four Star or Eight Star,,,,,,,,,,,
-03:22,Spark II,,Magical,"110,00",,,,,,,,
-03:30,Wicked Bolt,,Magical,"50,000",,,,,,,,
-03:31,Wicked Bolt,,Magical,"50,000",,,,,,,,
-03:32,Wicked Bolt,,Magical,"50,000",,,,,,,,
-03:33,Wicked Bolt,,Magical,"50,000",,,,,,,,
-03:34,Wicked Bolt,,Magical,"50,000",,,,,,,,
-03:41,Ion Cluster,,,,,,,,,,,
-03:55,Stampeding Thunder,,Magical,"60,000",,,,,,,,
-03:56,Stampeding Thunder,,Magical,"60,000",,,,,,,,
-03:57,Stampeding Thunder,,Magical,"60,000",,,,,,,,
-03:58,Stampeding Thunder,,Magical,"60,000",,,,,,,,
-03:59,Stampeding Thunder,,Magical,"60,000",,,,,,,,
-04:02,Stampeding Thunder (Arena Change),,,,,,,,,,,
-04:12,Electron Stream,,,,,,,,,,,
-04:12,Positron Stream ,,Magical,"300,000",,,,,,,,
-04:12,Negatron Stream,,Magical,"300,000",,,,,,,,
-04:17,Spinning Current,,Magical,"140,000",,,,,,,,
-04:17,Axe Current,,Magical,"80,000",,,,,,,,
-04:25,Electron Stream,,,,,,,,,,,
-04:25,Positron Stream,,Magical,"300,000",,,,,,,,
-04:25,Negatron Stream,,Magical,"300,000",,,,,,,,
-04:30,Spinning Current,,Magical,"140,000",,,,,,,,
-04:30,Axe Current,,Magical,"80,000",,,,,,,,
-04:38,Electron Stream,,,,,,,,,,,
-04:38,Positron Stream,,Magical,"300,000",,,,,,,,
-04:38,Negatron Stream,,Magical,"300,000",,,,,,,,
-04:43,Spinning Current,,Magical,"140,000",,,,,,,,
-04:43,Axe Current,,Magical,"80,000",,,,,,,,
-04:52,Wicked Jolt,,Magical,"460,000",,,,,,,,
-04:55,Wicked Jolt,,Magical,"460,000",,,,,,,,
-05:17,Electrope Transplant,,,,,,,,,,,
-05:24,Lightning Field,,,,,,,,,,,
-05:27,Lightning Field,,,,,,,,,,,
-05:30,Lightning Field,,,,,,,,,,,
-05:33,Lightning Field,,,,,,,,,,,
-05:36,Lightning Field,,,,,,,,,,,
-05:36,Conduction Point,,Magical,"90,000",,,,,,,,
-05:39,Lightning Field,,,,,,,,,,,
-05:39,Forked Fissures,,Magical,"120,000",,,,,,,,
-05:42,Lightning Field,,,,,,,,,,,
-05:50,Lightning Field,,,,,,,,,,,
-05:53,Lightning Field,,,,,,,,,,,
-05:56,Lightning Field,,,,,,,,,,,
-05:59,Lightning Field,,,,,,,,,,,
-06:03,Lightning Field,,,,,,,,,,,
-06:03,Conduction Point,,Magical,"90,000",,,,,,,,
-06:06,Lightning Field,,,,,,,,,,,
-06:06,Forked Fissures,,Magical,"90,000",,,,,,,,
-06:09,Lightning Field,,,,,,,,,,,
-06:19,Soul Shock,,Magical,"120,000",,,,,,,,
-06:22,Impact,,Physical,"50,000",,,,,,,,
-06:25,Impact,,Physical,"50,000",,,,,,,,
-06:27,Cannonbolt,,Physical,"160,000",,,,,,,,
-06:52,Cross Tail Switch,,,,,,,,,,,
-06:53,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-06:54,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-06:55,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-06:56,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-06:57,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-06:58,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-06:59,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-07:00,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-07:01,Cross Tail Switch,,Magical,"120,000",,,,,,,,
-07:10,Exaflares (1st Hit),,,,,,,,,,,
-07:10,Wicked Blaze,,Magical,"40,000",,,,,,,,
-07:11,Wicked Blaze,,Magical,"40,000",,,,,,,,
-07:13,Wicked Blaze,,Magical,"40,000",,,,,,,,
-07:13,Exaflares (Last Hit),,,,,,,,,,,
-07:15,Wicked Blaze,,Magical,"40,000",,,,,,,,
-07:21,Wicked Special,,,,,,,,,,,
-07:37,Mustard Bomb,,Magical,"460,000",,,,,,,,
-07:37,Kindling Cauldron,,Magical,"140,000",,,,,,,,
-07:47,Mustard Bomb (Debuff),,Magical,"140,000",,,,,,,,
-07:54,Aetherical Conversion,,,,,,,,,,,
-08:04,Tail Thrust or Tail Splash,,Magical,"40,000",,,,,,,,
-08:08,Tail Thrust or Tail Splash,,Magical,"40,000",,,,,,,,
-08:25,Azure Thunder,,Magical,"160,000",,,,,,,,
-08:31,Twilight Sabbath,,,,,,,,,,,
-08:39,Wicked Fire (AoE Baits Placement),,,,,,,,,,,
-08:42,Side Spark (Clone 1),,,,,,,,,,,
-08:43,Wicked Fire (AoEs go off),,,,,,,,,,,
-08:50,Side Spark (Clone 2),,,,,,,,,,,
-08:50,Wicked Special,,,,,,,,,,,
-09:01,Midnight Sabbath,,,,,,,,,,,
-09:12,Concentrated Burst,,,,,,,,,,,
-09:12,Wicked Flare or Wicked Spark,,,,,,,,,,,
-09:16,Wicked Spark,,Magical,"80,000",,,,,,,,
-09:21,Wicked Special,,,,,,,,,,,
-09:28,Wicked Thunder,,Magical,"130,000",,,,,,,,
-09:39,Aetherial Conversion,,,,,,,,,,,
-09:49,Flame Slash,,,,,,,,,,,
-09:54,Raining Swords,,Physical,"26,000",,,,,,,,
-10:15,Chain Lighting,,,,,,,,,,,
-10:18,Chain Lighting,,,,,,,,,,,
-10:21,Chain Lighting,,,,,,,,,,,
-10:24,Chain Lighting,,,,,,,,,,,
-10:26,Chain Lighting,,,,,,,,,,,
-10:29,Chain Lighting,,,,,,,,,,,
-10:32,Chain Lighting,,,,,,,,,,,
-10:34,Chain Lighting,,,,,,,,,,,
-10:42,Tail Thrust or Tail Splash,,Magical,"40,000",,,,,,,,
-10:46,Tail Thrust or Tail Splash,,Magical,"40,000",,,,,,,,
-10:58,Mustard Bomb,,Magical,"460,000",,,,,,,,
-10:58,Kindling Cauldron,,Magical,"140,000",,,,,,,,
-11:07,Mustard Bomb (Debuff),,Magical,"140,000",,,,,,,,
-11:15,Aetherial Conversion,,,,,,,,,,,
-11:23,Azure Thunder,,Magical,"160,000",,,,,,,,
-11:29,Ion Cluster,,,,,,,,,,,
-11:36,Sunrise Sabbath,,,,,,,,,,,
-11:49,Soaring Soulpress,,Physical,"100,000",,,,,,,,
-11:49,Positron Stream,,Magical,"100,000",,,,,,,,
-11:49,Negatron Stream,,Magical,"100,000",,,,,,,,
-11:57,Wicked Special,,,,,,,,,,,
-12:06,Soaring Soulpress,,Physical,"100,000",,,,,,,,
-12:06,Positron Stream,,Magical,"100,000",,,,,,,,
-12:06,Negatron Stream,,Magical,"100,000",,,,,,,,
-12:13,Tail Thrust or Tail Splash,,Magical,"40,000",,,,,,,,
-12:17,Tail Thrust or Tail Splash,,Magical,"40,000",,,,,,,,
-12:29,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:30,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:31,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:32,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:37,Laceration (1st),,Physical,"400,000",,,,,,,,
-12:37,Laceration (2nd),,Physical,"140,000",,,,,,,,
-12:46,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:47,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:48,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:50,Sword Quiver,,Physical,"40,000",,,,,,,,
-12:54,Laceration (1st),,Physical,"400,000",,,,,,,,
-12:54,Laceration (2nd),,Physical,"140,000",,,,,,,,
-13:04,Sword Quiver,,Physical,"40,000",,,,,,,,
-13:05,Sword Quiver,,Physical,"40,000",,,,,,,,
-13:05,Sword Quiver,,Physical,"40,000",,,,,,,,
-13:07,Sword Quiver,,Physical,"40,000",,,,,,,,
-13:11,Wicked Thunder,,Special,"9,999,999",,,,,,,,
+Time,Attack,,Type,Damage
+00:16,Wrath of Zeus,,Magical,"158,000"
+00:39,Bewitching Flight,,,
+00:50,Explosion,,,
+00:50,Electrifying Witch Hunt,,Physical,"126,000"
+00:58,Witch Hunt,,Physical,"126,000"
+00:58,Explosion,,,
+01:15,Narrowing Witch Hunt or Widening Witch Hunt,,,
+01:16,Witch Hunt,,Physical,"126,000"
+01:20,Witch Hunt,,Physical,"126,000"
+01:23,Witch Hunt,,Physical,"126,000"
+01:27,Witch Hunt,,Physical,"126,000"
+01:39,Wrath of Zeus,,Magical,"158,000"
+01:51,Electrope Edge,,,
+01:58,Witchgleam,,,
+02:06,Symphony Fantastique,,,
+02:16,Sidewise Spark,,,
+02:16,Four Star or Eight Star,,Magical,"130,000"
+02:24,Wicked Jolt,,Magical,"460,000"
+02:27,Wicked Jolt,,Magical,"460,000"
+02:39,Electrope Edge,,,
+02:46,Witchgleam,,Magical,"70,000"
+02:48,Witchgleam,,Magical,"70,000"
+02:49,Witchgleam,,Magical,"70,000"
+02:51,Witchgleam,,Magical,"70,000"
+02:54,Lightning Cage,,,
+03:02,Spark II,,Magical,"110,000"
+03:11,Sidewise Spark,,,
+03:11,Four Star or Eight Star,,,
+03:22,Spark II,,Magical,"110,00"
+03:30,Wicked Bolt,,Magical,"50,000"
+03:31,Wicked Bolt,,Magical,"50,000"
+03:32,Wicked Bolt,,Magical,"50,000"
+03:33,Wicked Bolt,,Magical,"50,000"
+03:34,Wicked Bolt,,Magical,"50,000"
+03:41,Ion Cluster,,,
+03:55,Stampeding Thunder,,Magical,"60,000"
+03:56,Stampeding Thunder,,Magical,"60,000"
+03:57,Stampeding Thunder,,Magical,"60,000"
+03:58,Stampeding Thunder,,Magical,"60,000"
+03:59,Stampeding Thunder,,Magical,"60,000"
+04:02,Stampeding Thunder (Arena Change),,,
+04:12,Electron Stream,,,
+04:12,Positron Stream ,,Magical,"300,000"
+04:12,Negatron Stream,,Magical,"300,000"
+04:17,Spinning Current,,Magical,"140,000"
+04:17,Axe Current,,Magical,"80,000"
+04:25,Electron Stream,,,
+04:25,Positron Stream,,Magical,"300,000"
+04:25,Negatron Stream,,Magical,"300,000"
+04:30,Spinning Current,,Magical,"140,000"
+04:30,Axe Current,,Magical,"80,000"
+04:38,Electron Stream,,,
+04:38,Positron Stream,,Magical,"300,000"
+04:38,Negatron Stream,,Magical,"300,000"
+04:43,Spinning Current,,Magical,"140,000"
+04:43,Axe Current,,Magical,"80,000"
+04:52,Wicked Jolt,,Magical,"460,000"
+04:55,Wicked Jolt,,Magical,"460,000"
+05:17,Electrope Transplant,,,
+05:24,Lightning Field,,,
+05:27,Lightning Field,,,
+05:30,Lightning Field,,,
+05:33,Lightning Field,,,
+05:36,Lightning Field,,,
+05:36,Conduction Point,,Magical,"90,000"
+05:39,Lightning Field,,,
+05:39,Forked Fissures,,Magical,"120,000"
+05:42,Lightning Field,,,
+05:50,Lightning Field,,,
+05:53,Lightning Field,,,
+05:56,Lightning Field,,,
+05:59,Lightning Field,,,
+06:03,Lightning Field,,,
+06:03,Conduction Point,,Magical,"90,000"
+06:06,Lightning Field,,,
+06:06,Forked Fissures,,Magical,"90,000"
+06:09,Lightning Field,,,
+06:19,Soul Shock,,Magical,"120,000"
+06:22,Impact,,Physical,"50,000"
+06:25,Impact,,Physical,"50,000"
+06:27,Cannonbolt,,Physical,"160,000"
+06:52,Cross Tail Switch,,,
+06:53,Cross Tail Switch,,Magical,"120,000"
+06:54,Cross Tail Switch,,Magical,"120,000"
+06:55,Cross Tail Switch,,Magical,"120,000"
+06:56,Cross Tail Switch,,Magical,"120,000"
+06:57,Cross Tail Switch,,Magical,"120,000"
+06:58,Cross Tail Switch,,Magical,"120,000"
+06:59,Cross Tail Switch,,Magical,"120,000"
+07:00,Cross Tail Switch,,Magical,"120,000"
+07:01,Cross Tail Switch,,Magical,"120,000"
+07:10,Exaflares (1st Hit),,,
+07:10,Wicked Blaze,,Magical,"40,000"
+07:11,Wicked Blaze,,Magical,"40,000"
+07:13,Wicked Blaze,,Magical,"40,000"
+07:13,Exaflares (Last Hit),,,
+07:15,Wicked Blaze,,Magical,"40,000"
+07:21,Wicked Special,,,
+07:37,Mustard Bomb,,Magical,"460,000"
+07:37,Kindling Cauldron,,Magical,"140,000"
+07:47,Mustard Bomb (Debuff),,Magical,"140,000"
+07:54,Aetherical Conversion,,,
+08:04,Tail Thrust or Tail Splash,,Magical,"40,000"
+08:08,Tail Thrust or Tail Splash,,Magical,"40,000"
+08:25,Azure Thunder,,Magical,"160,000"
+08:31,Twilight Sabbath,,,
+08:39,Wicked Fire (AoE Baits Placement),,,
+08:42,Side Spark (Clone 1),,,
+08:43,Wicked Fire (AoEs go off),,,
+08:50,Side Spark (Clone 2),,,
+08:50,Wicked Special,,,
+09:01,Midnight Sabbath,,,
+09:12,Concentrated Burst,,,
+09:12,Wicked Flare or Wicked Spark,,,
+09:16,Wicked Spark,,Magical,"80,000"
+09:21,Wicked Special,,,
+09:28,Wicked Thunder,,Magical,"130,000"
+09:39,Aetherial Conversion,,,
+09:49,Flame Slash,,,
+09:54,Raining Swords,,Physical,"26,000"
+10:15,Chain Lighting,,,
+10:18,Chain Lighting,,,
+10:21,Chain Lighting,,,
+10:24,Chain Lighting,,,
+10:26,Chain Lighting,,,
+10:29,Chain Lighting,,,
+10:32,Chain Lighting,,,
+10:34,Chain Lighting,,,
+10:42,Tail Thrust or Tail Splash,,Magical,"40,000"
+10:46,Tail Thrust or Tail Splash,,Magical,"40,000"
+10:58,Mustard Bomb,,Magical,"460,000"
+10:58,Kindling Cauldron,,Magical,"140,000"
+11:07,Mustard Bomb (Debuff),,Magical,"140,000"
+11:15,Aetherial Conversion,,,
+11:23,Azure Thunder,,Magical,"160,000"
+11:29,Ion Cluster,,,
+11:36,Sunrise Sabbath,,,
+11:49,Soaring Soulpress,,Physical,"100,000"
+11:49,Positron Stream,,Magical,"100,000"
+11:49,Negatron Stream,,Magical,"100,000"
+11:57,Wicked Special,,,
+12:06,Soaring Soulpress,,Physical,"100,000"
+12:06,Positron Stream,,Magical,"100,000"
+12:06,Negatron Stream,,Magical,"100,000"
+12:13,Tail Thrust or Tail Splash,,Magical,"40,000"
+12:17,Tail Thrust or Tail Splash,,Magical,"40,000"
+12:29,Sword Quiver,,Physical,"40,000"
+12:30,Sword Quiver,,Physical,"40,000"
+12:31,Sword Quiver,,Physical,"40,000"
+12:32,Sword Quiver,,Physical,"40,000"
+12:37,Laceration (1st),,Physical,"400,000"
+12:37,Laceration (2nd),,Physical,"140,000"
+12:46,Sword Quiver,,Physical,"40,000"
+12:47,Sword Quiver,,Physical,"40,000"
+12:48,Sword Quiver,,Physical,"40,000"
+12:50,Sword Quiver,,Physical,"40,000"
+12:54,Laceration (1st),,Physical,"400,000"
+12:54,Laceration (2nd),,Physical,"140,000"
+13:04,Sword Quiver,,Physical,"40,000"
+13:05,Sword Quiver,,Physical,"40,000"
+13:05,Sword Quiver,,Physical,"40,000"
+13:07,Sword Quiver,,Physical,"40,000"
+13:11,Wicked Thunder,,Special,"9,999,999"

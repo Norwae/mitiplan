@@ -1,152 +1,152 @@
-Time,Attack,,Type,Damage,Tank 1,Tank 2,Healer 1,Healer 2,DPS 1,DPS 2,DPS 3,DPS 4
-00:11,Brutal Impact,,Physical,"34,000",,,Asylum,,,,,
-00:12,Brutal Impact,,Physical,"34,000",,,,,,,,
-00:13,Brutal Impact,,Physical,"34,000",,,,,,,,
-00:14,Brutal Impact,,Physical,"34,000",,,,,,,,
-00:20,Knuckle Sandwich,,Physical,"130,000",,,,,,,,
-00:22,Knuckle Sandwich,,Physical,"130,000",,,,,,,,
-00:23,Knuckle Sandwich,,Physical,"130,000",,,,,,,,
-00:24,Knuckle Sandwich,,Physical,"130,000",,,,,,,,
-00:37,Quadruple Lariat or Octuple Lariat,,,,,,,,,,,
-00:38,Blazing Lariat,,Physical,"120,000",,,Temperance,,,,,
-00:48,Quadroboom Dive or Octoboom Dive,,Magical,"140,000",,,,,,,,
-00:52,Diveboom,,Physical,"120,000",,,,,,,,
-01:00,Brutal Impact,,Physical,"34,000",,,Liturgy of the bell,,,,,
-01:01,Brutal Impact,,Physical,"34,000",,,,,,,,
-01:02,Brutal Impact,,Physical,"34,000",,,,,,,,
-01:03,Brutal Impact,,Physical,"34,000",,,,,,,,
-01:16,Barbarous Barage,,,,,,,,,,,
-01:27,Explosion (Tower),,Magical,"38,000",,,,,,,,
-01:30,Explosion (Tower),,Magical,"38,000",,,,,,,,
-01:33,Explosion (Tower),,Magical,"38,000",,,,,,,,
-01:35,Murderous Mist,,,,,,,,,,,
-01:49,Doping Draught,,,,,,,,,,,
-02:23,Quadruple Lariat or Octuple Lariat,,,,,,,,,,,
-02:23,Blazing Lariat,,Physical,"125,000",,,Asylum,,,,,
-02:34,Quadroboom Dive or Octoboom Dive,,Magical,"40,000",,,,,,,,
-02:38,Diveboom,,Physical,"130,000",,,,,,,,
-02:46,Brutal Impact,,Physical,"40,000",,,,,,,,
-02:47,Brutal Impact,,Physical,"40,000",,,,,,,,
-02:48,Brutal Impact,,Physical,"40,000",,,,,,,,
-02:49,Brutal Impact,,Physical,"40,000",,,,,,,,
-02:50,Brutal Impact,,Physical,"40,000",,,,,,,,
-02:51,Brutal Impact,,Physical,"40,000",,,,,,,,
-02:57,Knuckle Sandwich,,Physical,"138,000",,,,,,,,
-02:58,Knuckle Sandwich,,Physical,"138,000",,,,,,,,
-02:59,Knuckle Sandwich,,Physical,"138,000",,,,,,,,
-03:00,Knuckle Sandwich,,Physical,"138,000",,,,,,,,
-03:02,Knuckle Sandwich,,Physical,"138,000",,,,,,,,
-03:03,Knuckle Sandwich,,Physical,"138,000",,,,,,,,
-03:15,Tag Team,,,,,,,,,,,
-03:25,Chain Deathmatch,,,,,,Temperance,,,,,
-03:34,Lariat Combo,,Physical,"40,000",,,,,,,,
-03:38,Lariat Combo,,,,,,,,,,,
-03:46,Quadruple Lariat or Octuple Lariat,,,,,,,,,,,
-03:46,Blazing Lariat,,Physical,"125,000",,,,,,,,
-03:54,Brutal Impact,,Physical,"40,000",,,Asylum,,,,,
-03:55,Brutal Impact,,Physical,"40,000",,,,,,,,
-03:56,Brutal Impact,,Physical,"40,000",,,,,,,,
-03:57,Brutal Impact,,Physical,"40,000",,,,,,,,
-03:58,Brutal Impact,,Physical,"40,000",,,,,,,,
-03:59,Brutal Impact,,Physical,"40,000",,,,,,,,
-04:13,Final Fusedown,,,,,,,,,,,
-04:26,Explosion (Fuse),,Magical,"85,000",,,,,,,,
-04:31,Explosion (Fuse),,Magical,"85,000",,,,,,,,
-04:39,Quadroboom Dive or Octoboom Dive,,Magical,"40,000",,,,,,,,
-04:42,Diveboom,,Physical,"150,000",,,,,,,,
-04:58,Fusefield,,,,,,,,,,,
-05:04,Bombarian Flame,,,,,,,,,,,
-05:11,Mana Explosion,,Magical,"100,000",,,Liturgy of the bell,,,,,
-05:14,Mana Explosion,,Magical,"100,000",,,,,,,,
-05:17,Mana Explosion,,Magical,"100,000",,,,,,,,
-05:20,Mana Explosion,,Magical,"100,000",,,,,,,,
-05:23,Mana Explosion,,Magical,"100,000",,,,,,,,
-05:26,Mana Explosion,,Magical,"100,000",,,Temperance,,,,,
-05:31,Mana Explosion,,Magical,"100,000",,,Asylum,,,,,
-05:35,Mana Explosion,,Magical,"100,000",,,,,,,,
-05:54,Knuckle Sandwich,,Physical,"150,000",,,,,,,,
-05:55,Knuckle Sandwich,,Physical,"150,000",,,,,,,,
-05:56,Knuckle Sandwich,,Physical,"150,000",,,,,,,,
-05:57,Knuckle Sandwich,,Physical,"150,000",,,,,,,,
-05:58,Knuckle Sandwich,,Physical,"150,000",,,,,,,,
-05:59,Knuckle Sandwich,,Physical,"150,000",,,,,,,,
-06:11,Doping Draught,,,,,,,,,,,
-06:31,Quadroboom Bombarian Special or Octoboom Bombarian Special,,,,,,,,,,,
-06:32,Bombarian Special,,Physical,"62,000",,,,,,,,
-06:33,Bombarian Special,,Physical,"62,000",,,,,,,,
-06:35,Bombarian Special,,Physical,"62,000",,,,,,,,
-06:37,Bombarian Special,,Physical,"62,000",,,,,,,,
-06:39,Bombarian Special,,Physical,"62,000",,,,,,,,
-06:40,Bombarian Special (in or out),,,,,,,,,,,
-06:43,Bombarian Special (in or out),,,,,,,,,,,
-06:45,Bombarian Special,,Physical,"62,000",,,,,,,,
-06:51,Bombarian Special (Knockback),,Physical,"62,000",,,,,,,,
-06:55,Bombariboom,,Physical,"110,000",,,,,,,,
-07:06,Fuse of Fury,,,,,,,,,,,
-07:12,Tag Team,,,,,,,,,,,
-07:23,Chain Deathmatch,,,,,,,,,,,
-07:37,Murderous Mist,,,,,,Asylum,,,,,
-07:37,Lariat Combo,,Physical,"40,000",,,,,,,,
-07:42,Lariat Combo,,,,,,,,,,,
-07:51,Quadroboom Dive or Octoboom Dive,,Magical,"60,000",,,,,,,,
-07:54,Diveboom,,Physical,"140,000",,,,,,,,
-08:04,Brutal Impact,,Physical,"42,000",,,Temperance,,,,,
-08:05,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:06,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:07,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:08,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:09,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:10,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:11,Brutal Impact,,Physical,"42,000",,,,,,,,
-08:17,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:18,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:19,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:20,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:22,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:23,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:24,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:25,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-08:37,Fuse or Foe,,,,,,,,,,,
-08:46,Infernal Spin (1st Hit),,,,,,,,,,,
-08:46,Bombrain (Quake),,,,,,,,,,,
-08:50,Bombrain (Quake),,,,,,,,,,,
-08:53,Infernal Spin (last hit),,,,,,,,,,,
-08:54,Bombrain (Quake),,,,,,,,,,,
-08:57,Explosion,,Magical,"100,000",,,,,,,,
-08:58,Bombrain (Quake),,,,,,,,,,,
-09:02,Bombrain (Quake),,,,,,,,,,,
-09:02,Explosion,,Magical,"100,000",,,,,,,,
-09:07,Quadruple Lariat or Octuple Lariat,,,,,,,,,,,
-09:08,Blazing Lariat,,Physical,"125,000",,,Asylum,,,,,
-09:15,Brutal Impact,,Physical,"42,000",,,Liturgy of the bell,,,,,
-09:16,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:17,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:18,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:19,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:21,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:22,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:23,Brutal Impact,,Physical,"42,000",,,,,,,,
-09:36,Barbarous Barage,,,,,,,,,,,
-09:47,Explosion (Tower),,Magical,"48,000",,,,,,,,
-09:50,Explosion (Tower),,Magical,"48,000",,,,,,,,
-09:53,Explosion (Tower),,Magical,"48,000",,,,,,,,
-09:56,Lariat Combo,,,,,,,,,,,
-10:00,Lariat Combo,,,,,,,,,,,
-10:16,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:17,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:18,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:19,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:20,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:21,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:22,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:23,Knuckle Sandwich,,Physical,"158,000",,,,,,,,
-10:38,Doping Draught,,,,,,,,,,,
-10:59,Special Bombarian Special,,Physical,"66,000",,,Asylum,,,,,
-11:00,Special Bombarian Special,,Physical,"66,000",,,Temperance,,,,,
-11:02,Special Bombarian Special,,Physical,"66,000",,,,,,,,
-11:04,Special Bombarian Special,,Physical,"66,000",,,,,,,,
-11:06,Special Bombarian Special,,Physical,"66,000",,,,,,,,
-11:07,Special Bombarian Special,,,,,,,,,,,
-11:10,Special Bombarian Special,,,,,,,,,,,
-11:12,Special Bombarian Special,,Physical,"66,000",,,,,,,,
-11:18,Special Bombarian Special,,Physical,"9,999,999",,,,,,,,
+Time,Attack,,Type,Damage
+00:11,Brutal Impact,,Physical,"34,000"
+00:12,Brutal Impact,,Physical,"34,000"
+00:13,Brutal Impact,,Physical,"34,000"
+00:14,Brutal Impact,,Physical,"34,000"
+00:20,Knuckle Sandwich,,Physical,"130,000"
+00:22,Knuckle Sandwich,,Physical,"130,000"
+00:23,Knuckle Sandwich,,Physical,"130,000"
+00:24,Knuckle Sandwich,,Physical,"130,000"
+00:37,Quadruple Lariat or Octuple Lariat,,,
+00:38,Blazing Lariat,,Physical,"120,000"
+00:48,Quadroboom Dive or Octoboom Dive,,Magical,"140,000"
+00:52,Diveboom,,Physical,"120,000"
+01:00,Brutal Impact,,Physical,"34,000"
+01:01,Brutal Impact,,Physical,"34,000"
+01:02,Brutal Impact,,Physical,"34,000"
+01:03,Brutal Impact,,Physical,"34,000"
+01:16,Barbarous Barage,,,
+01:27,Explosion (Tower),,Magical,"38,000"
+01:30,Explosion (Tower),,Magical,"38,000"
+01:33,Explosion (Tower),,Magical,"38,000"
+01:35,Murderous Mist,,,
+01:49,Doping Draught,,,
+02:23,Quadruple Lariat or Octuple Lariat,,,
+02:23,Blazing Lariat,,Physical,"125,000"
+02:34,Quadroboom Dive or Octoboom Dive,,Magical,"40,000"
+02:38,Diveboom,,Physical,"130,000"
+02:46,Brutal Impact,,Physical,"40,000"
+02:47,Brutal Impact,,Physical,"40,000"
+02:48,Brutal Impact,,Physical,"40,000"
+02:49,Brutal Impact,,Physical,"40,000"
+02:50,Brutal Impact,,Physical,"40,000"
+02:51,Brutal Impact,,Physical,"40,000"
+02:57,Knuckle Sandwich,,Physical,"138,000"
+02:58,Knuckle Sandwich,,Physical,"138,000"
+02:59,Knuckle Sandwich,,Physical,"138,000"
+03:00,Knuckle Sandwich,,Physical,"138,000"
+03:02,Knuckle Sandwich,,Physical,"138,000"
+03:03,Knuckle Sandwich,,Physical,"138,000"
+03:15,Tag Team,,,
+03:25,Chain Deathmatch,,,
+03:34,Lariat Combo,,Physical,"40,000"
+03:38,Lariat Combo,,,
+03:46,Quadruple Lariat or Octuple Lariat,,,
+03:46,Blazing Lariat,,Physical,"125,000"
+03:54,Brutal Impact,,Physical,"40,000"
+03:55,Brutal Impact,,Physical,"40,000"
+03:56,Brutal Impact,,Physical,"40,000"
+03:57,Brutal Impact,,Physical,"40,000"
+03:58,Brutal Impact,,Physical,"40,000"
+03:59,Brutal Impact,,Physical,"40,000"
+04:13,Final Fusedown,,,
+04:26,Explosion (Fuse),,Magical,"85,000"
+04:31,Explosion (Fuse),,Magical,"85,000"
+04:39,Quadroboom Dive or Octoboom Dive,,Magical,"40,000"
+04:42,Diveboom,,Physical,"150,000"
+04:58,Fusefield,,,
+05:04,Bombarian Flame,,,
+05:11,Mana Explosion,,Magical,"100,000"
+05:14,Mana Explosion,,Magical,"100,000"
+05:17,Mana Explosion,,Magical,"100,000"
+05:20,Mana Explosion,,Magical,"100,000"
+05:23,Mana Explosion,,Magical,"100,000"
+05:26,Mana Explosion,,Magical,"100,000"
+05:31,Mana Explosion,,Magical,"100,000"
+05:35,Mana Explosion,,Magical,"100,000"
+05:54,Knuckle Sandwich,,Physical,"150,000"
+05:55,Knuckle Sandwich,,Physical,"150,000"
+05:56,Knuckle Sandwich,,Physical,"150,000"
+05:57,Knuckle Sandwich,,Physical,"150,000"
+05:58,Knuckle Sandwich,,Physical,"150,000"
+05:59,Knuckle Sandwich,,Physical,"150,000"
+06:11,Doping Draught,,,
+06:31,Quadroboom Bombarian Special or Octoboom Bombarian Special,,,
+06:32,Bombarian Special,,Physical,"62,000"
+06:33,Bombarian Special,,Physical,"62,000"
+06:35,Bombarian Special,,Physical,"62,000"
+06:37,Bombarian Special,,Physical,"62,000"
+06:39,Bombarian Special,,Physical,"62,000"
+06:40,Bombarian Special (in or out),,,
+06:43,Bombarian Special (in or out),,,
+06:45,Bombarian Special,,Physical,"62,000"
+06:51,Bombarian Special (Knockback),,Physical,"62,000"
+06:55,Bombariboom,,Physical,"110,000"
+07:06,Fuse of Fury,,,
+07:12,Tag Team,,,
+07:23,Chain Deathmatch,,,
+07:37,Murderous Mist,,,
+07:37,Lariat Combo,,Physical,"40,000"
+07:42,Lariat Combo,,,
+07:51,Quadroboom Dive or Octoboom Dive,,Magical,"60,000"
+07:54,Diveboom,,Physical,"140,000"
+08:04,Brutal Impact,,Physical,"42,000"
+08:05,Brutal Impact,,Physical,"42,000"
+08:06,Brutal Impact,,Physical,"42,000"
+08:07,Brutal Impact,,Physical,"42,000"
+08:08,Brutal Impact,,Physical,"42,000"
+08:09,Brutal Impact,,Physical,"42,000"
+08:10,Brutal Impact,,Physical,"42,000"
+08:11,Brutal Impact,,Physical,"42,000"
+08:17,Knuckle Sandwich,,Physical,"158,000"
+08:18,Knuckle Sandwich,,Physical,"158,000"
+08:19,Knuckle Sandwich,,Physical,"158,000"
+08:20,Knuckle Sandwich,,Physical,"158,000"
+08:22,Knuckle Sandwich,,Physical,"158,000"
+08:23,Knuckle Sandwich,,Physical,"158,000"
+08:24,Knuckle Sandwich,,Physical,"158,000"
+08:25,Knuckle Sandwich,,Physical,"158,000"
+08:37,Fuse or Foe,,,
+08:46,Infernal Spin (1st Hit),,,
+08:46,Bombrain (Quake),,,
+08:50,Bombrain (Quake),,,
+08:53,Infernal Spin (last hit),,,
+08:54,Bombrain (Quake),,,
+08:57,Explosion,,Magical,"100,000"
+08:58,Bombrain (Quake),,,
+09:02,Bombrain (Quake),,,
+09:02,Explosion,,Magical,"100,000"
+09:07,Quadruple Lariat or Octuple Lariat,,,
+09:08,Blazing Lariat,,Physical,"125,000"
+09:15,Brutal Impact,,Physical,"42,000"
+09:16,Brutal Impact,,Physical,"42,000"
+09:17,Brutal Impact,,Physical,"42,000"
+09:18,Brutal Impact,,Physical,"42,000"
+09:19,Brutal Impact,,Physical,"42,000"
+09:21,Brutal Impact,,Physical,"42,000"
+09:22,Brutal Impact,,Physical,"42,000"
+09:23,Brutal Impact,,Physical,"42,000"
+09:36,Barbarous Barage,,,
+09:47,Explosion (Tower),,Magical,"48,000"
+09:50,Explosion (Tower),,Magical,"48,000"
+09:53,Explosion (Tower),,Magical,"48,000"
+09:56,Lariat Combo,,,
+10:00,Lariat Combo,,,
+10:16,Knuckle Sandwich,,Physical,"158,000"
+10:17,Knuckle Sandwich,,Physical,"158,000"
+10:18,Knuckle Sandwich,,Physical,"158,000"
+10:19,Knuckle Sandwich,,Physical,"158,000"
+10:20,Knuckle Sandwich,,Physical,"158,000"
+10:21,Knuckle Sandwich,,Physical,"158,000"
+10:22,Knuckle Sandwich,,Physical,"158,000"
+10:23,Knuckle Sandwich,,Physical,"158,000"
+10:38,Doping Draught,,,
+10:59,Special Bombarian Special,,Physical,"66,000"
+11:00,Special Bombarian Special,,Physical,"66,000"
+11:02,Special Bombarian Special,,Physical,"66,000"
+11:04,Special Bombarian Special,,Physical,"66,000"
+11:06,Special Bombarian Special,,Physical,"66,000"
+11:07,Special Bombarian Special,,,
+11:10,Special Bombarian Special,,,
+11:12,Special Bombarian Special,,Physical,"66,000"
+11:18,Special Bombarian Special,,Physical,"9,999,999"

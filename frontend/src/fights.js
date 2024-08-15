@@ -9,11 +9,13 @@ export class Fight {
         this.name = name
         this.code = code
         this.levelSync = levelSync
-
-        this.eventualEvents = loadEvents(code)
     }
 
     async events(): Promise<CombatEvent[]> {
+        if (!this.eventualEvents) {
+            this.eventualEvents = loadEvents(this.code)
+        }
+
         return await this.eventualEvents
     }
 }
@@ -23,7 +25,7 @@ const parseTimestamp = (str: string): number => {
     return parseInt(first) * 60 + parseInt(second)
 }
 
-const parseDamageType = (str: string): DamageType => str === "Magical" ? "MAGIC" :
+const parseDamageType = (str: string): DamageType => str === "Magical" ? "MAGICAL" :
     str === "Physical" ? "PHYSICAL" :
         str === "Special" ? "SPECIAL" :
             "AVOIDABLE"
@@ -37,7 +39,7 @@ async function loadEvents(code: string): Promise<CombatEvent[]> {
             rows.push({
                 timestamp: parseTimestamp(data.Time),
                 name: data.Attack,
-                rawDamage: parseInt(data.Damage.replace(",", "")),
+                rawDamage: parseInt(data.Damage.replaceAll(",", "")),
                 damageType: parseDamageType(data.Type)
             })
         }
@@ -67,7 +69,7 @@ async function loadEvents(code: string): Promise<CombatEvent[]> {
 
 }
 
-export type DamageType = "MAGIC" | "PHYSICAL" | "SPECIAL" | "AVOIDABLE"
+export type DamageType = "MAGICAL" | "PHYSICAL" | "SPECIAL" | "AVOIDABLE"
 
 export interface CombatEvent {
     timestamp: number,

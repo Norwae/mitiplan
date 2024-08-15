@@ -130,7 +130,7 @@ export const jobs = [
     job("RDM", "Red Mage", casterRole,
         a("Magicked Barrier", 86, 120, lsi("5c95999b6491dcc5714cd7f926b03fc56b5c88dc"))
     ),
-    job("PIC", "Pictomancer", casterRole,
+    job("PCT", "Pictomancer", casterRole,
         a("Tempura Grassa", 88, 120, lsi("ed684b430814130c6917a00018cd5e400430e210"))
     ),
     job("SMN", "Summoner", casterRole,

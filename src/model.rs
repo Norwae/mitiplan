@@ -12,7 +12,7 @@ pub enum JobCode {
     DRK, GNB, PLD, WAR,
     AST, SCH, SGE, WHM,
     DRG, MNK, NIN, RPR, SAM, VPR,
-    BLM, RDM, PIC, SMN,
+    BLM, RDM, PCT, SMN,
     BRD, MCH, DNC
 }
 

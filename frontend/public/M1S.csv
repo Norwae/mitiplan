@@ -1,86 +1,81 @@
-Time,Attack,,Type,Damage,Tank 1,Tank 2,Healer 1,Healer 2,DPS 1,DPS 2,DPS 3,DPS 4
-00:15,Quadruple Crossing,,Physical,"130,000",,,,,,,,
-00:18,Quadruple Crossing,,Physical,"130,000",,,,,,,,
-00:21,Quadruple Crossing,,,,,,,,,,,
-00:24,Quadruple Crossing,,,,,,,,,,,
-00:33,Biscuit Maker,,Physical,"330,000",,,,,,,,
-00:35,Biscuit Maker,,Physical,"330,000",,,,,,,,
-00:50,Nine Lives,,,,,,,,,,,
-00:58,One-two Paw,,,,,,,,,,,
-01:01,One-two Paw,,,,,,,,,,,
-01:05,Soulshade,,,,,,,,,,,
-01:20,Nine Lives,,,,,,,,,,,
-01:23,One-two Paw,,,,,,,,,,,
-01:26,One-two Paw,,,,,,,,,,,
-01:29,Double Swipe,,Physical,"120,000",,,,,,,,
-01:34,Soulshade,,,,,,,,,,,
-01:43,Leaping Quadruple Crossing,,Physical,"130,000",,,,,,,,
-01:46,Leaping Quadruple Crossing,,Physical,"130,000",,,,,,,,
-01:48,Leaping Quadruple Crossing,,,,,,,,,,,
-01:51,Leaping Quadruple Crossing,,,,,,,,,,,
-01:52,Double Swipe,,Physical,"120,000",,,,,,,,
-02:03,Bloody Scratch,,Physical,"130,000",,,,,,,,
-02:26,Mouser (1st hit),,,,,,,,,,,
-02:37,Mouser (last hit),,,,,,,,,,,
-02:47,Copycat,,,,,,,,,,,
-03:00,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-03:01,Impact,,Physical,"17,000",,,,,,,,
-03:11,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-03:14,Impact,,Physical,"17,000",,,,,,,,
-03:22,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-03:25,Impact,,Physical,"17,000",,,,,,,,
-03:33,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-03:34,Impact,,Physical,"17,000",,,,,,,,
-03:44,Biscuit Maker,,Physical,"330,000",,,,,,,,
-03:46,Biscuit Maker,,Physical,"330,000",,,,,,,,
-03:57,Shockwave,,Magical,0,,,,,,,,
-04:01,Grimalkin Gale,,Magical,"125,000",,,,,,,,
-04:16,Nine Lives,,,,,,,,,,,
-04:25,Leaping One-two Paw,,,,,,,,,,,
-04:27,Leaping One-two Paw,,,,,,,,,,,
-04:33,Soulshade,,,,,,,,,,,
-04:38,Nine Lives,,,,,,,,,,,
-04:47,Leaping Quadruple Crossing,,Physical,"130,000",,,,,,,,
-04:50,Leaping Quadruple Crossing,,Physical,"130,000",,,,,,,,
-04:52,Leaping Quadruple Crossing,,,,,,,,,,,
-04:55,Leaping Quadruple Crossing,,,,,,,,,,,
-05:00,Soulshade,,,,,,,,,,,
-05:26,Leaping One-two Paw,,,,,,,,,,,
-05:26,Tempestuous Tear,,Magical,"110,000",,,,,,,,
-05:28,Leaping One-two Paw,,,,,,,,,,,
-05:51,Leaping Quadruple Crossing,,Physical,"130,000",,,,,,,,
-05:51,Nailchipper,,Magical,"90,000",,,,,,,,
-05:54,Leaping Quadruple Crossing,,Physical,"130,000",,,,,,,,
-05:57,Leaping Quadruple Crossing,,,,,,,,,,,
-06:00,Nailchipper,,Magical,"90,000",,,,,,,,
-06:00,Leaping Quadruple Crossing,,,,,,,,,,,
-06:11,Bloody Scratch,,Physical,"130,000",,,,,,,,
-06:35,Mouser (1st hit),,,,,,,,,,,
-06:45,Mouser (last hit),,,,,,,,,,,
-06:56,Copycat,,,,,,,,,,,
-07:08,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-07:09,Overshadow,,Magical,"130,000",,,,,,,,
-07:12,Impact,,Physical,"17,000",,,,,,,,
-07:21,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-07:22,Splintering Nails,,,,,,,,,,,
-07:22,Impact,,Physical,"17,000",,,,,,,,
-07:33,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-07:34,Splintering Nails,,,,,,,,,,,
-07:36,Impact,,Physical,"17,000",,,,,,,,
-07:45,Elevate and Eviscerate,,Physical,"50,000",,,,,,,,
-07:46,Overshadow,,Magical,"130,000",,,,,,,,
-07:56,Biscuit Maker,,Physical,"330,000",,,,,,,,
-07:59,Biscuit Maker,,Physical,"330,000",,,,,,,,
-08:11,Shockwave,,Magical,0,,,,,,,,
-08:14,Grimalkin Gale,,Magical,"125,000",,,,,,,,
-08:34,Raining Cats,,Magical,"210,000",,,,,,,,
-08:40,Raining Cats,,Magical,"210,000",,,,,,,,
-08:46,Raining Cats,,Magical,"210,000",,,,,,,,
-08:52,Raining Cats,,Magical,"210,000",,,,,,,,
-09:04,Copycat,,,,,,,,,,,
-09:21,Predaceous Pounce (1st hit),,,,,,,,,,,
-09:28,Predaceous Pounce (last hit),,,,,,,,,,,
-09:28,One-two Paw,,,,,,,,,,,
-09:31,One-two Paw,,,,,,,,,,,
-09:53,Mouser (1st hit),,,,,,,,,,,
-10:02,Mouser (last hit),,,,,,,,,,,
+Time,Attack,,Type,Damage
+00:15,Quadruple Crossing,,Physical,"130,000"
+00:18,Quadruple Crossing,,Physical,"130,000"
+00:21,Quadruple Crossing,,,
+00:24,Quadruple Crossing,,,
+00:33,Biscuit Maker,,Physical,"330,000"
+00:35,Biscuit Maker,,Physical,"330,000"
+00:50,Nine Lives,,,
+00:58,One-two Paw,,,
+01:01,One-two Paw,,,
+01:05,Soulshade,,,
+01:20,Nine Lives,,,
+01:23,One-two Paw,,,
+01:26,One-two Paw,,,
+01:29,Double Swipe,,Physical,"120,000"
+01:34,Soulshade,,,
+01:43,Leaping Quadruple Crossing,,Physical,"130,000"
+01:46,Leaping Quadruple Crossing,,Physical,"130,000"
+01:48,Leaping Quadruple Crossing,,,
+01:51,Leaping Quadruple Crossing,,,
+01:52,Double Swipe,,Physical,"120,000"
+02:03,Bloody Scratch,,Physical,"130,000"
+02:26,Mouser (1st hit),,,
+02:37,Mouser (last hit),,,
+02:47,Copycat,,,
+03:00,Elevate and Eviscerate,,Physical,"50,000"
+03:01,Impact,,Physical,"17,000"
+03:11,Elevate and Eviscerate,,Physical,"50,000"
+03:14,Impact,,Physical,"17,000"
+03:22,Elevate and Eviscerate,,Physical,"50,000"
+03:25,Impact,,Physical,"17,000"
+03:33,Elevate and Eviscerate,,Physical,"50,000"
+03:34,Impact,,Physical,"17,000"
+03:44,Biscuit Maker,,Physical,"330,000"
+03:46,Biscuit Maker,,Physical,"330,000"
+03:57,Shockwave,,Magical,0
+04:01,Grimalkin Gale,,Magical,"125,000"
+04:16,Nine Lives,,,
+04:25,Leaping One-two Paw,,,
+04:27,Leaping One-two Paw,,,
+04:33,Soulshade,,,
+04:38,Nine Lives,,,
+04:47,Leaping Quadruple Crossing,,Physical,"130,000"
+04:50,Leaping Quadruple Crossing,,Physical,"130,000"
+04:52,Leaping Quadruple Crossing,,,
+04:55,Leaping Quadruple Crossing,,,
+05:00,Soulshade,,,
+05:26,Leaping One-two Paw,,,
+05:26,Tempestuous Tear,,Magical,"110,000"
+05:28,Leaping One-two Paw,,,
+05:51,Leaping Quadruple Crossing (or Nailchipper),,Physical,"130,000"
+05:54,Leaping Quadruple Crossing,,Physical,"130,000"
+05:57,Leaping Quadruple Crossing,,,
+06:00,Nailchipper (or Leaping Quadruple Crossing),,Magical,"90,000"
+06:11,Bloody Scratch,,Physical,"130,000"
+06:35,Mouser (1st hit),,,
+06:45,Mouser (last hit),,,
+06:56,Copycat,,,
+07:08,Elevate and Eviscerate,,Physical,"50,000"
+07:09,Overshadow,,Magical,"130,000"
+07:12,Impact,,Physical,"17,000"
+07:21,Elevate and Eviscerate,,Physical,"50,000"
+07:22,Impact,,Physical,"17,000"
+07:33,Elevate and Eviscerate,,Physical,"50,000"
+07:36,Impact,,Physical,"17,000"
+07:45,Elevate and Eviscerate,,Physical,"50,000"
+07:46,Overshadow,,Magical,"130,000"
+07:56,Biscuit Maker,,Physical,"330,000"
+07:59,Biscuit Maker,,Physical,"330,000"
+08:11,Shockwave,,Magical,0
+08:14,Grimalkin Gale,,Magical,"125,000"
+08:34,Raining Cats,,Magical,"210,000"
+08:40,Raining Cats,,Magical,"210,000"
+08:46,Raining Cats,,Magical,"210,000"
+08:52,Raining Cats,,Magical,"210,000"
+09:04,Copycat,,,
+09:21,Predaceous Pounce starts,,,
+09:28,One-two Paw,,,
+09:31,One-two Paw,,,
+09:53,Mouser (1st hit),,,
+10:02,"Mouser (last hit, everyone falls)",,,

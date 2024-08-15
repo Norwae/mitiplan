@@ -84,7 +84,6 @@ export class FightActionGrid extends React.Component {
             <tr>
                 <th>Action</th>
                 <th>Timestamp</th>
-                <th>Type</th>
                 <th>Damage</th>
                 {this.props.jobs.map(({code, friendlyName}) => <th key={code}>{friendlyName}</th>)}
             </tr>
@@ -94,8 +93,8 @@ export class FightActionGrid extends React.Component {
                 return <tr key={"_" + idx}>
                     <td>{event.name}</td>
                     <td>{formatTime(event.timestamp)}</td>
-                    <td>{event.damageType !== "AVOIDABLE" ? event.damageType : ""}</td>
-                    <td>{event.rawDamage > 0 ? event.rawDamage : ""}</td>
+                    <td>{event.rawDamage > 0 ?
+                        <span>{event.rawDamage}<img alt={event.damageType} src={"/DMG_" +event.damageType + ".png"} width="16" height="16"/></span>: ""}</td>
                     {this.props.jobs.map(job => {
                         return <td key={job.code}><JobActionCell combatEvent={event} job={job}
                                                                  level={this.props.levelSync}
