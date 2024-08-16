@@ -62,7 +62,7 @@ class Application extends React.Component {
         PersistenceModel.load(plan)
             .then(({party, actions, fight}) => {
                 this.setState({
-                    party, actions
+                    party, actions, fightEvents: null
                 })
                 this.setFight(fight)
             })
