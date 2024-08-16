@@ -19,8 +19,9 @@ export class JobBar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = this.rebuildState(props.selected)
-        this.checkFullParty()
+        const state = this.rebuildState(props.selected);
+        this.state = state
+        this.checkFullParty(state)
     }
 
     rebuildState(selected) {
@@ -32,13 +33,13 @@ export class JobBar extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.selected !== this.props.selected) {
+        if (!prevProps.selected && !!this.props.selected) {
             this.setState(this.rebuildState(this.props.selected))
         }
     }
 
-    checkFullParty() {
-        const activeJobs = jobs.filter(j => this.state[j.code])
+    checkFullParty(state) {
+        const activeJobs = jobs.filter(j => state[j.code])
         if (activeJobs.length === 8) {
             // full party, let's go
             this.props.onPartySelected(activeJobs)

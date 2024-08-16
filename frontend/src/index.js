@@ -45,16 +45,15 @@ class Application extends React.Component {
     }
 
     setParty(party: Job[]) {
-        if ((party && !this.state.party) || (!party && this.state.party)) {
-            this.setState({
-                party
-            })
+        if (party && party.length !== 8){
+            party = null
         }
+        this.setState({party})
     }
 
     async setFight(fight: Fight) {
         const fightEvents = await fight.events()
-        this.setState({fight, fightEvents})
+        this.setState({fight, fightEvents, actions: []})
     }
 
     async reset() {
