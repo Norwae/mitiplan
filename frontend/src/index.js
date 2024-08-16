@@ -57,16 +57,11 @@ class Application extends React.Component {
         this.setState({fight, fightEvents})
     }
 
-    reset() {
+    async reset() {
         const plan = this.props.plan.substring(1)
-        PersistenceModel.load(plan)
-            .then(({party, actions, fight}) => {
-                this.setState({
-                    party, actions, fightEvents: null
-                })
-                this.setFight(fight)
-            })
-            .catch(console.log)
+        const {fight, party, actions} = await PersistenceModel.load(plan)
+        const fightEvents = await fight.events()
+        this.setState({fight, party, actions, fightEvents})
     }
 
     async export() {
@@ -78,14 +73,14 @@ class Application extends React.Component {
     }
 
     canRender(): boolean {
-        return this.state.party && this.state.fightEvents
+        return this.state.party && this.state.fightEvents && this.state.fight
     }
 
     render() {
         return <div id="approot">
             <div id="headerbar">
-                <FightSelector fights={fights} onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
-                <JobBar jobs={jobs} onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
+                <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
+                <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
                 <div className="persistenceControl">
                     <button onClick={() => this.reset()}>↺</button>
                     <button onClick={() => this.export()}>🔗</button>

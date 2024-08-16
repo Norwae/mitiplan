@@ -1,4 +1,5 @@
 import React from "react";
+import {jobs} from "./jobs";
 
 class JobToggle extends React.Component {
     render() {
@@ -18,17 +19,26 @@ export class JobBar extends React.Component {
 
     constructor(props) {
         super(props);
-        const preselect = props.selected || []
-        let state = props.jobs.reduce((accu, next) => {
-            accu[next.code] = preselect.indexOf(next.code) >= 0
-            return accu
-        }, {});
-        this.state = state
-        this.checkFullParty(state)
+        this.state = this.rebuildState(props.selected)
+        this.checkFullParty()
     }
 
-    checkFullParty(selected) {
-        const activeJobs = this.props.jobs.filter(j => selected[j.code])
+    rebuildState(selected) {
+        selected = (selected || []).map(job => job.code)
+        return jobs.reduce((accu, next) => {
+            accu[next.code] = selected.indexOf(next.code) >= 0
+            return accu
+        }, {});
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.selected !== this.props.selected) {
+            this.setState(this.rebuildState(this.props.selected))
+        }
+    }
+
+    checkFullParty() {
+        const activeJobs = jobs.filter(j => this.state[j.code])
         if (activeJobs.length === 8) {
             // full party, let's go
             this.props.onPartySelected(activeJobs)
@@ -54,13 +64,10 @@ export class JobBar extends React.Component {
     }
 
     render() {
-        let jobToggles = this.props.jobs.map(({code, friendlyName}) => React.createElement(JobToggle, {
-            toggle: () => {
-                this.toggleJob(code)
-            }, key: code, active: this.state[code], code, friendlyName
-        }));
         return <ul className="toggle_container">
-            {jobToggles}
+            {jobs.map(({code, friendlyName}) =>
+                <JobToggle friendlyName={friendlyName} code={code} active={this.state[code]} key={code}
+                           toggle={() => this.toggleJob(code)}/>)}
         </ul>
     }
 }
