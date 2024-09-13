@@ -89,8 +89,7 @@ Time,Attack,,Type,Damage
 08:50,Side Spark (Clone 2),,,
 08:50,Wicked Special,,,
 09:01,Midnight Sabbath,,,
-09:12,Concentrated Burst,,,
-09:12,Wicked Flare or Wicked Spark,,,
+09:12,Concentrated Burst Combo,,,
 09:16,Wicked Spark,,Magical,80000
 09:21,Wicked Special,,,
 09:28,Wicked Thunder,,Magical,130000
@@ -114,13 +113,9 @@ Time,Attack,,Type,Damage
 11:23,Azure Thunder,,Magical,160000
 11:29,Ion Cluster,,,
 11:36,Sunrise Sabbath,,,
-11:49,Soaring Soulpress,,Physical,100000
-11:49,Positron Stream,,Magical,100000
-11:49,Negatron Stream,,Magical,100000
+11:49,Soaring Soulpress Combo,,Physical,100000
 11:57,Wicked Special,,,
-12:06,Soaring Soulpress,,Physical,100000
-12:06,Positron Stream,,Magical,100000
-12:06,Negatron Stream,,Magical,100000
+12:06,Soaring Soulpress Combo,,Physical,100000
 12:13,Tail Thrust or Tail Splash,,Magical,40000
 12:17,Tail Thrust or Tail Splash,,Magical,40000
 12:29,Sword Quiver,,Physical,40000
