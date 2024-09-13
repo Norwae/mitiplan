@@ -23,15 +23,17 @@ class Application extends React.Component {
             party: null,
             fight: null,
             fightEvents: [],
-            actions:[]
+            actions: [],
+            loading: false
         }
 
-        if (props.plan) {
-            this.reset()
-        } else {
-            this.setFight(props.fight || fights[0])
-        }
-
+        setTimeout(() => {
+            if (props.plan) {
+                this.reset()
+            } else {
+                this.setFight(props.fight || fights[0])
+            }
+        }, 50)
     }
 
     addAction(action: CombatAction) {
@@ -45,22 +47,31 @@ class Application extends React.Component {
     }
 
     setParty(party: Job[]) {
-        if (party && party.length !== 8){
+        if (party && party.length !== 8) {
             party = null
         }
         this.setState({party})
     }
 
     async setFight(fight: Fight) {
+        this.setState({loading: true})
         const fightEvents = await fight.events()
-        this.setState({fight, fightEvents, actions: []})
+        this.setState({fight, fightEvents, actions: [], loading: false})
     }
 
     async reset() {
+        this.setState({loading: true})
         const plan = this.props.plan.substring(1)
-        const {fight, party, actions} = await PersistenceModel.load(plan)
-        const fightEvents = await fight.events()
-        this.setState({fight, party, actions, fightEvents})
+        let data: { fight: Fight, party: Job[], actions: CombatAction[] };
+        if (plan) {
+            data = await PersistenceModel.load(plan)
+        } else {
+            const fight = fights[0]
+            data = {fight, party: null, actions: []}
+        }
+        const {fight, party, actions} = data;
+        const fightEvents = await fight.events();
+        this.setState({fight, party, actions, fightEvents, loading: false})
     }
 
     async export() {
@@ -77,6 +88,9 @@ class Application extends React.Component {
 
     render() {
         return <div id="approot">
+            <div id="loader" className={this.state.loading ? "active" : ""}>
+                <div id="loaderText">Loading data, please wait</div>
+            </div>
             <div id="headerbar">
                 <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
                 <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
@@ -87,8 +101,8 @@ class Application extends React.Component {
             </div>
             {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
                                                  actions={this.state.actions} levelSync={this.state.fight.levelSync}
-                                          addHandler={ca => this.addAction(ca)}
-                                          removeHandler={ca => this.removeAction(ca)}/> :
+                                                 addHandler={ca => this.addAction(ca)}
+                                                 removeHandler={ca => this.removeAction(ca)}/> :
                 <div className="unreadyInfo">
                     <b>No fight / Party selected</b>
                     <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>
