@@ -12,6 +12,7 @@ import {fights} from "./fights"
 import "./index.css"
 import {CombatAction} from "./fightgrid";
 import {PersistenceModel} from "./persistence";
+import {toast, Toaster} from "react-hot-toast";
 
 
 class Application extends React.Component {
@@ -24,7 +25,8 @@ class Application extends React.Component {
             fight: null,
             fightEvents: [],
             actions: [],
-            loading: false
+            loading: false,
+            dirty: false
         }
 
         setTimeout(() => {
@@ -33,24 +35,30 @@ class Application extends React.Component {
             } else {
                 this.setFight(props.fight || fights[0])
             }
+
+            setInterval(this.export.bind(this, false), 5000)
         }, 50)
     }
 
     addAction(action: CombatAction) {
         this.setState({
-            actions: [action, ...this.state.actions]
+            actions: [action, ...this.state.actions],
+            dirty: true
         })
     }
 
     removeAction(action: CombatAction) {
-        this.setState({actions: this.state.actions.filter(a => a !== action)})
+        this.setState({
+            actions: this.state.actions.filter(a => a !== action),
+            dirty: true
+        })
     }
 
     setParty(party: Job[]) {
         if (party && party.length !== 8) {
             party = null
         }
-        this.setState({party})
+        this.setState({party, dirty: true})
     }
 
     async setFight(fight: Fight) {
@@ -71,14 +79,20 @@ class Application extends React.Component {
         }
         const {fight, party, actions} = data;
         const fightEvents = await fight.events();
-        this.setState({fight, party, actions, fightEvents, loading: false})
+        this.setState({fight, party, actions, fightEvents, loading: false, dirty: false})
+        if (plan) {
+            window.location.hash = plan
+        }
     }
 
-    async export() {
-        if (this.state.party) {
+    async export(toClip: boolean) {
+        if (this.state.party && this.state.dirty) {
             let key = await new PersistenceModel(this.state.party, this.state.actions, this.state.fight).store()
             window.location.hash = key
-            await navigator.clipboard.writeText(window.location)
+            if (toClip) {
+                await navigator.clipboard.writeText(window.location)
+                toast('Shareable link copied', {icon: '🔗'})
+            }
         }
     }
 
@@ -88,15 +102,17 @@ class Application extends React.Component {
 
     render() {
         return <div id="approot">
+            <Toaster/>
             <div id="loader" className={this.state.loading ? "active" : ""}>
                 <div id="loaderText">Loading data, please wait</div>
             </div>
+
             <div id="headerbar">
                 <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
                 <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
                 <div className="persistenceControl">
                     <button onClick={() => this.reset()}>↺</button>
-                    <button onClick={() => this.export()}>🔗</button>
+                    <button onClick={() => this.export(true)}>🔗</button>
                 </div>
             </div>
             {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
