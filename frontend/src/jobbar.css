@@ -31,7 +31,8 @@
         }
 
         & .active span:after {
-            content: "✅";
+            font-size: x-small;
+            content: " (x) ";
         }
     }
 }
