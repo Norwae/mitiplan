@@ -80,7 +80,11 @@ class Application extends React.Component {
     async export(toClip: boolean) {
         if (this.state.party && this.state.dirty) {
             let key = await new PersistenceModel(this.state.party, this.state.actions, this.state.fight).store()
-            window.location.hash = key
+
+            if (key) {
+                window.location.hash = key
+            }
+
             if (toClip) {
                 await navigator.clipboard.writeText(window.location)
                 toast('Shareable link copied', {icon: '🔗'})

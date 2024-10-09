@@ -4,6 +4,7 @@ import {Job, jobs} from "./jobs";
 import {fights} from "./fights";
 
 const backend = " https://oyw5rhxoy4.execute-api.us-east-1.amazonaws.com/mitisheet-backend"
+let lastSave = null
 
 export class PersistenceModel {
     party: Job[]
@@ -16,7 +17,7 @@ export class PersistenceModel {
         this.fight = fight
     }
 
-    async store(): Promise<string> {
+    async store(): Promise<string | null> {
         const body = {
             "Store": {
                 code: this.fight.code,
@@ -28,8 +29,15 @@ export class PersistenceModel {
                 }))
             }
         }
+        const jsonBody = JSON.stringify(body);
+        console.log('had ', lastSave, ' now have ', jsonBody)
+        if (jsonBody === lastSave) {
+            return null
+        }
+        lastSave = jsonBody
+
         const response = await fetch(backend, {
-            method: "POST", body: JSON.stringify(body)
+            method: "POST", body: jsonBody
         })
         const txt = await response.text();
 
@@ -41,7 +49,9 @@ export class PersistenceModel {
             method: "POST", body: `{"Lookup": "${plan}"}`
         });
         const txt = await response.text();
-        let {code, actions, party} = JSON.parse(txt);
+        const parsed = JSON.parse(txt);
+        lastSave = JSON.stringify(parsed)
+        let {code, actions, party} = parsed;
         actions = actions.map(({timestamp, ability}) => {
             let job = jobs.byCode(ability.job)
             return new CombatAction(timestamp, job.code, job.findAction(ability.level));
