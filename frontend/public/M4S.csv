@@ -1,7 +1,6 @@
 Time,Attack,,Type,Damage
 00:16,Wrath of Zeus,,Magical,158000
 00:39,Bewitching Flight,,,
-00:50,Explosion,,,
 00:50,Electrifying Witch Hunt,,Physical,126000
 00:58,Witch Hunt,,Physical,126000
 01:15,Narrowing/Widening Witch Hunt,,,
@@ -67,14 +66,12 @@ Time,Attack,,Type,Damage
 06:59,Cross Tail Switch,,Magical,120000
 07:00,Cross Tail Switch,,Magical,120000
 07:01,Cross Tail Switch,,Magical,120000
-07:10,Exaflares (1st Hit),,,
 07:10,Wicked Blaze,,Magical,40000
 07:11,Wicked Blaze,,Magical,40000
 07:13,Wicked Blaze,,Magical,40000
 07:15,Wicked Blaze,,Magical,40000
 07:21,Wicked Special,,,
-07:37,Mustard Bomb,,Magical,460000
-07:37,Kindling Cauldron,,Magical,140000
+07:37,Mustard Bomb / Kindling Cauldron,,Magical,460000
 07:47,Mustard Bomb (Debuff),,Magical,140000
 07:54,Aetherical Conversion,,,
 08:04,Tail Thrust or Tail Splash,,Magical,40000
@@ -84,8 +81,7 @@ Time,Attack,,Type,Damage
 08:39,Wicked Fire (AoE Baits Placement),,,
 08:42,Side Spark (Clone 1),,,
 08:43,Wicked Fire (AoEs go off),,,
-08:50,Side Spark (Clone 2),,,
-08:50,Wicked Special,,,
+08:50,Side Spark (Clone 2) / Wicked Special,,,
 09:01,Midnight Sabbath,,,
 09:12,Concentrated Burst Combo,,,
 09:16,Wicked Spark,,Magical,80000
@@ -104,8 +100,7 @@ Time,Attack,,Type,Damage
 10:34,Chain Lighting,,,
 10:42,Tail Thrust or Tail Splash,,Magical,40000
 10:46,Tail Thrust or Tail Splash,,Magical,40000
-10:58,Mustard Bomb,,Magical,460000
-10:58,Kindling Cauldron,,Magical,140000
+10:58,Mustard Bomb / Kindling Cauldron,,Magical,460000
 11:07,Mustard Bomb (Debuff),,Magical,140000
 11:15,Aetherial Conversion,,,
 11:23,Azure Thunder,,Magical,160000

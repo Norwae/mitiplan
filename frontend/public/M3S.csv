@@ -21,7 +21,6 @@ Time,Attack,,Type,Damage
 01:33,Explosion (Tower),,Magical,"38,000"
 01:35,Murderous Mist,,,
 01:49,Doping Draught,,,
-02:23,Quadruple Lariat or Octuple Lariat,,,
 02:23,Blazing Lariat,,Physical,"125,000"
 02:34,Quadroboom Dive or Octoboom Dive,,Magical,"40,000"
 02:38,Diveboom,,Physical,"130,000"
@@ -41,7 +40,6 @@ Time,Attack,,Type,Damage
 03:25,Chain Deathmatch,,,
 03:34,Lariat Combo,,Physical,"40,000"
 03:38,Lariat Combo,,,
-03:46,Quadruple Lariat or Octuple Lariat,,,
 03:46,Blazing Lariat,,Physical,"125,000"
 03:54,Brutal Impact,,Physical,"40,000"
 03:55,Brutal Impact,,Physical,"40,000"
@@ -85,7 +83,6 @@ Time,Attack,,Type,Damage
 07:06,Fuse of Fury,,,
 07:12,Tag Team,,,
 07:23,Chain Deathmatch,,,
-07:37,Murderous Mist,,,
 07:37,Lariat Combo,,Physical,"40,000"
 07:42,Lariat Combo,,,
 07:51,Quadroboom Dive or Octoboom Dive,,Magical,"60,000"
@@ -108,13 +105,11 @@ Time,Attack,,Type,Damage
 08:25,Knuckle Sandwich,,Physical,"158,000"
 08:37,Fuse or Foe,,,
 08:46,Infernal Spin (1st Hit),,,
-08:46,Bombrain (Quake),,,
 08:50,Bombrain (Quake),,,
 08:53,Infernal Spin (last hit),,,
 08:54,Bombrain (Quake),,,
 08:57,Explosion,,Magical,"100,000"
 08:58,Bombrain (Quake),,,
-09:02,Bombrain (Quake),,,
 09:02,Explosion,,Magical,"100,000"
 09:07,Quadruple Lariat or Octuple Lariat,,,
 09:08,Blazing Lariat,,Physical,"125,000"

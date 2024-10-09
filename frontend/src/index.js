@@ -131,6 +131,5 @@ class Application extends React.Component {
 
 const rootElement = document.getElementById("root");
 const initialPlan = document.location.hash
-console.log(rootElement)
 const root = ReactDOM.createRoot(rootElement)
 root.render(<Application plan={initialPlan}/>)

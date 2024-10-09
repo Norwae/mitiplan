@@ -36,12 +36,21 @@ async function loadEvents(code: string): Promise<CombatEvent[]> {
         let rows = []
 
         const step = ({data}) => {
-            rows.push({
-                timestamp: parseTimestamp(data.Time),
-                name: data.Attack,
-                rawDamage: parseInt(data.Damage.replaceAll(",", "")),
-                damageType: parseDamageType(data.Type)
-            })
+            const {Time, Attack, Damage, Type} = data
+            const timestamp = parseTimestamp(Time);
+            const rawDamage = parseInt(Damage.replaceAll(",", ""));
+            const damageType = parseDamageType(Type);
+
+            if (rows.length && rows[rows.length -  1].timestamp === timestamp) {
+                console.log("Clashing timestamp, dropping " + JSON.stringify(data))
+            } else {
+                rows.push({
+                    timestamp,
+                    rawDamage,
+                    damageType,
+                    name: Attack
+                })
+            }
         }
 
         const complete = () => {
