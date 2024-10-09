@@ -4,26 +4,27 @@ body {
 }
 
 #headerbar {
-    height: 100px;
+    display: table;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-select.fightSelectDropDown {
-    margin-top: 15px;
-    vertical-align: top;
-    display: inline;
-    height: 70px;
+#headerbar .headerline {
+    display: table-row;
 }
 
-ul.toggle_container {
-    display: inline-block;
-    min-height: 70px;
+#headerbar .headerline * {
+    display: table-cell;
+    overflow: clip;
 }
 
-ul.toggle_container li {
-    display: inline;
+#headerbar .headerline select {
+    vertical-align: bottom;
+    height: 3em;
 }
 
 img.jobtoggle {
+    height: 3em;
 }
 
 table#actionGrid {

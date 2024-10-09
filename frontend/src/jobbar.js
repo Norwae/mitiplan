@@ -6,8 +6,6 @@ class JobToggle extends React.Component {
         return <li><img
             alt={this.props.friendlyName}
             id={this.props.code + "_toggle"}
-            width="64"
-            height="64"
             className={"jobtoggle " + (this.props.active ? "active" : "inactive")}
             src={"/" + this.props.code + ".png"}
             onClick={this.props.toggle}/></li>;

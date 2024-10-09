@@ -108,8 +108,10 @@ class Application extends React.Component {
             </div>
 
             <div id="headerbar">
-                <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
-                <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
+                <div class="headerline">
+                    <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
+                    <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
+                </div>
                 <div className="persistenceControl">
                     <button onClick={() => this.reset()}>↺</button>
                     <button onClick={() => this.export(true)}>🔗</button>
