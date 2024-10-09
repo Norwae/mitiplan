@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import type {Ability, Job} from "./jobs";
-import {jobs} from "./jobs";
+import type {Job} from "./jobs";
 import {JobBar} from "./jobbar";
 import {FightSelector} from "./fightselector";
 import {FightActionGrid} from "./fightgrid";
@@ -21,12 +20,7 @@ class Application extends React.Component {
         super(props);
 
         this.state = {
-            party: null,
-            fight: null,
-            fightEvents: [],
-            actions: [],
-            loading: false,
-            dirty: false
+            party: null, fight: null, fightEvents: [], actions: [], loading: false, dirty: false
         }
 
         setTimeout(() => {
@@ -42,15 +36,13 @@ class Application extends React.Component {
 
     addAction(action: CombatAction) {
         this.setState({
-            actions: [action, ...this.state.actions],
-            dirty: true
+            actions: [action, ...this.state.actions], dirty: true
         })
     }
 
     removeAction(action: CombatAction) {
         this.setState({
-            actions: this.state.actions.filter(a => a !== action),
-            dirty: true
+            actions: this.state.actions.filter(a => a !== action), dirty: true
         })
     }
 
@@ -106,32 +98,39 @@ class Application extends React.Component {
             <div id="loader" className={this.state.loading ? "active" : ""}>
                 <div id="loaderText">Loading data, please wait</div>
             </div>
-
-            <div id="headerbar">
-                <div class="headerline">
-                    <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
-                    <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
-                </div>
+            <div id="main">
                 <div className="persistenceControl">
                     <button onClick={() => this.reset()}>↺</button>
                     <button onClick={() => this.export(true)}>🔗</button>
                 </div>
-            </div>
-            {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
-                                                 actions={this.state.actions} levelSync={this.state.fight.levelSync}
-                                                 addHandler={ca => this.addAction(ca)}
-                                                 removeHandler={ca => this.removeAction(ca)}/> :
-                <div className="unreadyInfo">
-                    <b>No fight / Party selected</b>
-                    <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>
-                </div>
+                <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
+                <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
+                <div id="primaryTableArea">
+                    {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
+                                                         actions={this.state.actions}
+                                                         levelSync={this.state.fight.levelSync}
+                                                         addHandler={ca => this.addAction(ca)}
+                                                         removeHandler={ca => this.removeAction(ca)}/> :
+                        <div className="unreadyInfo">
+                            <b>No fight / Party selected</b>
+                            <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>
+                        </div>
 
-            }
+                    }</div>
+            </div>
         </div>
     }
 }
 
-const rootElement = document.getElementById("root");
-const initialPlan = document.location.hash
-const root = ReactDOM.createRoot(rootElement)
-root.render(<Application plan={initialPlan}/>)
+
+const
+    rootElement = document.getElementById("root");
+const
+    initialPlan = document.location.hash
+const
+    root = ReactDOM.createRoot(rootElement)
+root
+    .render(
+        <Application plan={
+            initialPlan
+        }/>)

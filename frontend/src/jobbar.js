@@ -1,14 +1,14 @@
 import React from "react";
 import {jobs} from "./jobs";
 
+import './jobbar.css'
+
 class JobToggle extends React.Component {
     render() {
-        return <li><img
-            alt={this.props.friendlyName}
-            id={this.props.code + "_toggle"}
-            className={"jobtoggle " + (this.props.active ? "active" : "inactive")}
-            src={"/" + this.props.code + ".png"}
-            onClick={this.props.toggle}/></li>;
+        return <li onClick={(evt) => this.props.toggle()} className={this.props.active ? "active": "inactive"}>
+            <img src={"/" + this.props.code + ".png"} alt={this.props.friendlyName}/>
+            <span>{this.props.friendlyName}</span>
+        </li>;
     }
 
 }

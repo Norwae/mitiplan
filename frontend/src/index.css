@@ -3,30 +3,26 @@ body {
     margin: 20px;
 }
 
-#headerbar {
-    display: table;
-    width: 100%;
-    margin-bottom: 10px;
+
+@media (width >= 1200px) {
+    #main {
+        display: grid;
+        grid-template-columns: 1fr 11fr;
+        grid-template-areas: "fight jobs" "mitigationTable mitigationTable";
+        gap: 5px;
+        width: 100%;
+    }
 }
 
-#headerbar .headerline {
-    display: table-row;
+@media (width < 1200px) {
+    #main {
+        display: grid;
+        grid-template-columns: 1fr 11fr;
+        grid-template-areas: "fight" "jobs" "mitigationTable";
+        gap: 5px;
+        width: 100%;
+    }
 }
-
-#headerbar .headerline * {
-    display: table-cell;
-    overflow: clip;
-}
-
-#headerbar .headerline select {
-    vertical-align: bottom;
-    height: 3em;
-}
-
-img.jobtoggle {
-    height: 3em;
-}
-
 table#actionGrid {
     border: thin solid;
     width: 100%;
@@ -56,12 +52,6 @@ table#actionGrid {
 #actionGrid tr:last-of-type td {
     border-bottom: 0;
 }
-
-.jobtoggle.active {
-    outline: medium solid greenyellow;
-    border-radius: 4px;
-}
-
 #loader {
     display: none;
 }

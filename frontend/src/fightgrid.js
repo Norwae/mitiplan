@@ -1,6 +1,8 @@
 import React from "react";
 import type {Ability} from "./jobs";
 
+import './fightgrid.css'
+
 
 export class CombatAction {
     timestamp: number
@@ -82,21 +84,21 @@ export class FightActionGrid extends React.Component {
         return <table id="actionGrid">
             <thead>
             <tr>
-                <th>Action</th>
-                <th>Timestamp</th>
-                <th>Damage</th>
-                {this.props.jobs.map(({code, friendlyName}) => <th key={code}>{friendlyName}</th>)}
+                <th className="action">Event</th>
+                <th className="timestamp">Time</th>
+                <th className="type">Damage</th>
+                {this.props.jobs.map(({code}) => <th key={code}><img src={'./' + code + ".png"}/></th>)}
             </tr>
             </thead>
             <tbody>
             {this.props.fight.map((event, idx) => {
                 return <tr key={"_" + idx}>
-                    <td>{event.name}</td>
-                    <td>{formatTime(event.timestamp)}</td>
-                    <td>{event.rawDamage > 0 ?
+                    <td className="action">{event.name}</td>
+                    <td className="timestamp">{formatTime(event.timestamp)}</td>
+                    <td className="type">{event.rawDamage > 0 ?
                         <span>{event.rawDamage}<img alt={event.damageType} src={"/DMG_" +event.damageType + ".png"} width="16" height="16"/></span>: ""}</td>
                     {this.props.jobs.map(job => {
-                        return <td key={job.code}><JobActionCell combatEvent={event} job={job}
+                        return <td className="abilityCell" key={job.code}><JobActionCell combatEvent={event} job={job}
                                                                  level={this.props.levelSync}
                                                                  actions={this.props.actions}
                                                                  addHandler={this.props.addHandler}

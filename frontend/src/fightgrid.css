@@ -1,0 +1,10 @@
+#primaryTableArea {
+    grid-area: mitigationTable;
+    & th img {
+        width: 1em;
+    }
+    & .action,& .type,& .timestamp {
+        width: 100px;
+    }
+
+}
