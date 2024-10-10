@@ -2,36 +2,26 @@ import {useState} from "react";
 
 import './hoverbubble.css'
 
-export default class HoverBubble extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            active: false, anchor: {
-                x: 0, y: 0
-            }
-        }
-    }
+export default function HoverBubble({fullText, prompt}) {
+    const [active, setActive] = useState(false)
+    const [anchor, setAnchor] = useState({x: 0, y: 0})
 
-    render() {
-        const style = {
-            top: (this.state.anchor.y - 30) + "px", left: (this.state.anchor.x - 230) + "px", display: this.state.active ? "block" : "none"
-        };
+    const style = {
+        top: (anchor.y - 30) + "px",
+        left: (anchor.x - 230) + "px",
+        display: active ? "block" : "none"
+    };
 
-        return <span className="hoverbubble-container">
-            <span className="hoverbubble-trigger" onMouseEnter={(evt: MouseEvent) => {
-                this.setState({
-                        active: true,
-                        anchor: {
-                            x: evt.pageX,
-                            y: evt.pageY
-                        }
-                    }
-                )
-            }} onMouseLeave={() => setActive(false)}>
-                {prompt || "?"}
-            </span>
-            <div className="hoverbubble-full" style={style}>{fullText}</div>
-        </span>;
-    }
-
+    return <span className="hoverbubble-container">
+        <span className="hoverbubble-trigger" onMouseEnter={(evt: MouseEvent) => {
+            setActive(true)
+            setAnchor({
+                x: evt.pageX,
+                y: evt.pageY
+            })
+        }} onMouseLeave={() => setActive(false)}>
+            {prompt || "?"}
+        </span>
+        <div className="hoverbubble-full" style={style}>{fullText}</div>
+    </span>;
 }

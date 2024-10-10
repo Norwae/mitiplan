@@ -84,7 +84,7 @@ class Application extends React.Component {
             <div id="main">
                 <PersistenceControl marshall={() => this.marshall()} unmarshall={(persistenceModel) => this.unmarshall(persistenceModel)}/>
                 <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
-                <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
+                <JobBar onPartySelected={p => this.setParty(p)} party={this.state.party}/>
                 <div id="primaryTableArea">
                     {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
                                                          actions={this.state.actions}

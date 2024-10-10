@@ -1,72 +1,63 @@
-import React from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {jobs} from "./jobs";
 
 import './jobbar.css'
 
-class JobToggle extends React.Component {
-    render() {
-        return <li onClick={(evt) => this.props.toggle()} className={this.props.active ? "active": "inactive"}>
-            <img src={"/" + this.props.code + ".png"} alt={this.props.friendlyName}/>
-            <span>{this.props.friendlyName}</span>
-        </li>;
-    }
+function JobToggle({active, friendlyName, code, toggle}) {
+    return <li onClick={toggle} className={active ? "active" : "inactive"}>
+        <img src={"/" + code + ".png"} alt={friendlyName}/>
+        <span>{friendlyName}</span>
+    </li>;
 
 }
 
-export class JobBar extends React.Component {
+export function JobBar({party, onPartySelected}) {
+    const [selected, setSelected] = useState({})
+    const [count, setCount] = useState(0)
+    if (party) {
+        const {select, updated} = party.reduce((acc, next) => {
+            acc.select[next.code] = true
+            acc.updated |= !selected[next.code]
+            return acc;
+        }, {select: {}, updated: false});
 
-    constructor(props) {
-        super(props);
-        const state = this.rebuildState(props.selected);
-        this.state = state
-        this.checkFullParty(state)
-    }
-
-    rebuildState(selected) {
-        selected = (selected || []).map(job => job.code)
-        return jobs.reduce((accu, next) => {
-            accu[next.code] = selected.indexOf(next.code) >= 0
-            return accu
-        }, {});
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (!prevProps.selected && !!this.props.selected) {
-            this.setState(this.rebuildState(this.props.selected))
+        if (updated) {
+            setCount(8)
+            setSelected(select)
         }
     }
+    const toggleJob = (code) => {
+        const newState = !selected[code];
+        const newCount = count + (newState ? 1 : -1);
 
-    checkFullParty(state) {
-        const activeJobs = jobs.filter(j => state[j.code])
-        if (activeJobs.length === 8) {
-            // full party, let's go
-            this.props.onPartySelected(activeJobs)
-        } else {
-            this.props.onPartySelected(null)
+        if (count === 8) {
+            if (newState) {
+                return
+            } else {
+                onPartySelected(null)
+            }
         }
-    }
 
-    toggleJob(code: string) {
-        const previousState = this.state[code]
-        let activeCount = Object.keys(this.state).reduce((count, next) => count + (this.state[next] ? 1 : 0), 0);
-
-        if (!previousState && activeCount >= 8) {
+        if (newState && newCount > 8) {
             return
         }
 
-        const newToggles = {
-            ...this.state,
+        const newSelected = {
+            ...selected,
+            [code]: newState
         }
-        newToggles[code] = !previousState
-        this.setState(newToggles)
-        this.checkFullParty(newToggles)
+
+        setSelected(newSelected)
+        setCount(newCount)
+
+        if (newCount === 8) {
+            onPartySelected(jobs.filter(({code}) => newSelected[code]))
+        }
     }
 
-    render() {
-        return <ul className="toggle_container">
-            {jobs.map(({code, friendlyName}) =>
-                <JobToggle friendlyName={friendlyName} code={code} active={this.state[code]} key={code}
-                           toggle={() => this.toggleJob(code)}/>)}
-        </ul>
-    }
+    return <ul className="toggle_container">
+        {jobs.map(({code, friendlyName}) =>
+            <JobToggle friendlyName={friendlyName} code={code} active={selected[code]} key={code}
+                       toggle={() => toggleJob(code)}/>)}
+    </ul>
 }
