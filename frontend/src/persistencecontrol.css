@@ -1,9 +1,16 @@
 
 .persistenceControl {
     position: fixed;
-    padding-right: 5px;
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 200px;
     bottom: 0;
     right: 0;
     display: grid;
+    z-index: 1;
+    background-color: white;
+    border: thin solid black;
+    border-radius: 5px;
 }
 

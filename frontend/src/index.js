@@ -4,15 +4,13 @@ import ReactDOM from 'react-dom/client';
 import type {Job} from "./jobs";
 import {JobBar} from "./jobbar";
 import {FightSelector} from "./fightselector";
-import {FightActionGrid} from "./fightgrid";
-import type {Fight} from "./fights";
-import {fights} from "./fights"
+import {CombatAction, FightActionGrid} from "./fightgrid";
+import {Fight, fights} from "./fights"
 
 import "./index.css"
-import {CombatAction} from "./fightgrid";
 import {PersistenceModel} from "./persistence";
 import {PersistenceControl} from './persistencecontrol'
-import {toast, Toaster} from "react-hot-toast";
+import {Toaster} from "react-hot-toast";
 
 
 class Application extends React.Component {
@@ -21,18 +19,9 @@ class Application extends React.Component {
         super(props);
 
         this.state = {
-            party: null, fight: null, fightEvents: [], actions: [], loading: false, dirty: false
+            party: null, fight: fights[0], fightEvents: [], actions: [], loading: false, dirty: false
         }
 
-        setTimeout(() => {
-            if (props.plan) {
-                this.reset()
-            } else {
-                this.setFight(props.fight || fights[0])
-            }
-
-            setInterval(this.export.bind(this, false), 5000)
-        }, 50)
     }
 
     addAction(action: CombatAction) {
@@ -62,37 +51,24 @@ class Application extends React.Component {
         this.setState({fight, fightEvents, actions: [], loading: false})
     }
 
-    async reset() {
-        this.setState({loading: true})
-        const plan = this.props.plan.substring(1)
-        let data: { fight: Fight, party: Job[], actions: CombatAction[] };
-        if (plan) {
-            data = await PersistenceModel.load(plan)
-        } else {
-            const fight = fights[0]
-            data = {fight, party: null, actions: []}
+    marshall() {
+        if (!this.state.dirty) {
+            return "UNCHANGED"
         }
-        const {fight, party, actions} = data;
-        const fightEvents = await fight.events();
-        this.setState({fight, party, actions, fightEvents, loading: false, dirty: false})
-        if (plan) {
-            window.location.hash = plan
+
+        if (this.state.fight  && this.state.party) {
+            return new PersistenceModel(this.state.party, this.state.actions, this.state.fight)
+        } else {
+            return null
         }
     }
 
-    async export(toClip: boolean) {
-        if (this.state.party && this.state.dirty) {
-            let key = await new PersistenceModel(this.state.party, this.state.actions, this.state.fight).store()
+    async unmarshall(data: PersistenceModel) {
+        this.setState({loading: true})
 
-            if (key) {
-                window.location.hash = key
-            }
-
-            if (toClip) {
-                await navigator.clipboard.writeText(window.location)
-                toast('Shareable link copied', {icon: '🔗'})
-            }
-        }
+        const {fight, party, actions} = data;
+        const fightEvents = await fight.events();
+        this.setState({fight, party, actions, fightEvents, loading: false, dirty: false})
     }
 
     canRender(): boolean {
@@ -106,7 +82,7 @@ class Application extends React.Component {
                 <div id="loaderText">Loading data, please wait</div>
             </div>
             <div id="main">
-                <PersistenceControl onExport={() => this.export(true)} onReset={() => this.reset()}/>
+                <PersistenceControl marshall={() => this.marshall()} unmarshall={(persistenceModel) => this.unmarshall(persistenceModel)}/>
                 <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
                 <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
                 <div id="primaryTableArea">

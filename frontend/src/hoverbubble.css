@@ -9,12 +9,11 @@
         border-radius: 16px;
         width: 6px;
         height: 8px;
-        z-index: 1;
+        z-index: 5;
         background: white;
     }
 
     & div {
-        display: block;
         border: thin black solid;
         border-radius: 5px;
         background: white;
