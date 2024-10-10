@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 
 import type {Job} from "./jobs";
@@ -11,95 +11,84 @@ import "./index.css"
 import {PersistenceModel} from "./persistence";
 import {PersistenceControl} from './persistencecontrol'
 import {Toaster} from "react-hot-toast";
+import type {CombatEvent} from "./fights";
 
 
-class Application extends React.Component {
+function Application() {
+    const [party, setParty] = useState(null)
+    const [fight, setFight] = useState(fights[0])
+    const [actions, setActions] = useState([])
+    const [fightEvents, setFightEvents] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [dirty, setDirty] = useState(false)
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            party: null, fight: fights[0], fightEvents: [], actions: [], loading: false, dirty: false
-        }
-
+    function addAction(action: CombatAction) {
+        setActions([action, ...actions])
+        setDirty(true)
     }
 
-    addAction(action: CombatAction) {
-        this.setState({
-            actions: [action, ...this.state.actions], dirty: true
-        })
+    function removeAction(action: CombatAction) {
+        setActions(actions.filter(a => a !== action))
+        setDirty(true)
     }
 
-    removeAction(action: CombatAction) {
-        this.setState({
-            actions: this.state.actions.filter(a => a !== action), dirty: true
-        })
+    async function initFight(fight: Fight, actions?: CombatAction[]) {
+        setLoading(true)
+        setFight(fight)
+        setFightEvents(await fight.events())
+        setActions(actions || [])
+        setLoading(false)
+        setDirty(false)
     }
 
-    setParty(party: Job[]) {
-        let expectedPartySize = this.state.fight?.partySize || 8
-
-        if (party && party.length !== expectedPartySize) {
-            party = null
-        }
-        this.setState({party, dirty: true})
-    }
-
-    async setFight(fight: Fight) {
-        this.setState({loading: true})
-        const fightEvents = await fight.events()
-        this.setState({fight, fightEvents, actions: [], loading: false})
-    }
-
-    marshall() {
-        if (!this.state.dirty) {
+    function marshall() {
+        if (!dirty) {
             return "UNCHANGED"
         }
 
-        if (this.state.fight  && this.state.party) {
-            return new PersistenceModel(this.state.party, this.state.actions, this.state.fight)
+        if (fight && party) {
+            return new PersistenceModel(party, actions, fight)
         } else {
             return null
         }
     }
 
-    async unmarshall(data: PersistenceModel) {
-        this.setState({loading: true})
+    async function unmarshall(data: PersistenceModel) {
+        setLoading(true)
 
         const {fight, party, actions} = data;
-        const fightEvents = await fight.events();
-        this.setState({fight, party, actions, fightEvents, loading: false, dirty: false})
+        setParty(party)
+        await initFight(fight, actions)
     }
 
-    canRender(): boolean {
-        return this.state.party && this.state.fightEvents && this.state.fight
+    function canRender(): boolean {
+        return party && fightEvents && fight
     }
 
-    render() {
-        return <div id="approot">
-            <Toaster/>
-            <div id="loader" className={this.state.loading ? "active" : ""}>
-                <div id="loaderText">Loading data, please wait</div>
-            </div>
-            <div id="main">
-                <PersistenceControl marshall={() => this.marshall()} unmarshall={(persistenceModel) => this.unmarshall(persistenceModel)}/>
-                <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
-                <JobBar onPartySelected={p => this.setParty(p)} party={this.state.party}/>
-                <div id="primaryTableArea">
-                    {this.canRender() ? <FightActionGrid fight={this.state.fightEvents} jobs={this.state.party}
-                                                         actions={this.state.actions}
-                                                         levelSync={this.state.fight.levelSync}
-                                                         addHandler={ca => this.addAction(ca)}
-                                                         removeHandler={ca => this.removeAction(ca)}/> :
-                        <div className="unreadyInfo">
-                            <b>No fight / Party selected</b>
-                            <p>Make sure you select exactly {this.state.fight?.partySize || 8} jobs, and a fight from the dropdown</p>
-                        </div>
-
-                    }</div>
-            </div>
+    return <div id="approot">
+        <Toaster/>
+        <div id="loader" className={loading ? "active" : ""}>
+            <div id="loaderText">Loading data, please wait</div>
         </div>
-    }
+        <div id="main">
+            <PersistenceControl marshall={marshall}
+                                unmarshall={unmarshall}/>
+            <FightSelector onFightSelected={f => initFight(f)} selected={fight}/>
+            <JobBar onPartySelected={p => setParty(p)} party={party}/>
+            <div id="primaryTableArea">
+                {canRender() ? <FightActionGrid fight={fightEvents} jobs={party}
+                                                     actions={actions}
+                                                     levelSync={fight.levelSync}
+                                                     addHandler={ca => addAction(ca)}
+                                                     removeHandler={ca => removeAction(ca)}/> :
+                    <div className="unreadyInfo">
+                        <b>No fight / Party selected</b>
+                        <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>
+                    </div>
+
+                }</div>
+        </div>
+    </div>
 }
 
 
