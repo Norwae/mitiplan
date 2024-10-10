@@ -1,5 +1,5 @@
 body {
-    font: 14px "Century Gothic", Futura, sans-serif;
+    font: 12pt "Century Gothic", Futura, sans-serif;
     margin: 20px;
 }
 
@@ -47,16 +47,6 @@ body {
     font-size: xxx-large;
     background: black;
     color: white;
-}
-
-.persistenceControl {
-    position: fixed;
-    top: 0;
-    right: 0;
-}
-
-.persistenceControl button {
-    font-size: 32pt;
 }
 
 .unreadyInfo {

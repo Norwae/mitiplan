@@ -1,0 +1,9 @@
+
+.persistenceControl {
+    position: fixed;
+    padding-right: 5px;
+    bottom: 0;
+    right: 0;
+    display: grid;
+}
+

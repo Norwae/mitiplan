@@ -96,7 +96,7 @@ export class FightActionGrid extends React.Component {
                     <td className="action">{event.name}</td>
                     <td className="timestamp">{formatTime(event.timestamp)}</td>
                     <td className="type">{event.rawDamage > 0 && event.damageType !== "AVOIDABLE" ?
-                        <span>{event.rawDamage}<img alt={event.damageType} src={"/DMG_" +event.damageType + ".png"} width="16" height="16"/></span>: ""}</td>
+                        <span>{event.rawDamage}<img alt={event.damageType} src={"/DMG_" +event.damageType + ".png"} className="damageIndicator"/></span>: ""}</td>
                     {this.props.jobs.map(job => {
                         return <td className="abilityCell" key={job.code}><JobActionCell combatEvent={event} job={job}
                                                                  level={this.props.levelSync}

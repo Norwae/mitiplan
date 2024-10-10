@@ -11,6 +11,7 @@ import {fights} from "./fights"
 import "./index.css"
 import {CombatAction} from "./fightgrid";
 import {PersistenceModel} from "./persistence";
+import {PersistenceControl} from './persistencecontrol'
 import {toast, Toaster} from "react-hot-toast";
 
 
@@ -105,10 +106,7 @@ class Application extends React.Component {
                 <div id="loaderText">Loading data, please wait</div>
             </div>
             <div id="main">
-                <div className="persistenceControl">
-                    <button onClick={() => this.reset()}>↺</button>
-                    <button onClick={() => this.export(true)}>🔗</button>
-                </div>
+                <PersistenceControl onExport={() => this.export(true)} onReset={() => this.reset()}/>
                 <FightSelector onFightSelected={f => this.setFight(f)} selected={this.state.fight}/>
                 <JobBar onPartySelected={p => this.setParty(p)} selected={this.state.party}/>
                 <div id="primaryTableArea">
