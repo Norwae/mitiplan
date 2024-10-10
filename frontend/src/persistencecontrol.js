@@ -12,7 +12,7 @@ export function PersistenceControl({marshall, unmarshall}) {
         return () => {
             clearInterval(handler)
         }
-    }, [])
+    })
 
     async function resetToBase() {
         const hash = firstHash;
@@ -62,14 +62,18 @@ export function PersistenceControl({marshall, unmarshall}) {
 
     return <div className="persistenceControl">
         <div>
-            <button onClick={() => resetToBase()}>↺ Reset</button>
+            <button id="resetButton" onClick={() => resetToBase()}>↺ Reset</button>
             <HoverBubble fullText="Reset this plan to the state you entered it in."/></div>
         <div>
-            <button onClick={() => createLinkAndUpdateBase()}>🔗 Create link</button>
+            <button id="exportButton" onClick={() => createLinkAndUpdateBase()}>🔗 Create link</button>
             <HoverBubble
                 fullText="Create a shareable link that will always return the current setup of this plan."/></div>
         <div>Current share URL:</div>
         <div><input type="text" readOnly="readonly" value={window.location.href} onClick={() => copyLink()}/>
         </div>
     </div>;
+}
+
+PersistenceControl.initialLoad = () => {
+    document.getElementById("resetButton").click()
 }

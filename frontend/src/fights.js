@@ -4,13 +4,11 @@ export class Fight {
     name: string
     code: string
     levelSync: number
-    partySize: number
 
-    constructor(name: string, code: string, levelSync?: number, partySize?: number) {
+    constructor(name: string, code: string, levelSync?: number) {
         this.name = name
         this.code = code
         this.levelSync = levelSync || 100
-        this.partySize = partySize || 8
     }
 
     async events(): Promise<CombatEvent[]> {

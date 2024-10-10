@@ -103,3 +103,7 @@ root
         <Application plan={
             initialPlan
         }/>)
+
+setTimeout(
+    PersistenceControl.initialLoad, 10
+)
