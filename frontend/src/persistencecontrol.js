@@ -38,19 +38,12 @@ export function PersistenceControl({marshall, unmarshall}) {
     }
 
     async function createLinkAndUpdateBase() {
-        const model: PersistenceModel | "UNCHANGED" | null = marshall()
+        const model: PersistenceModel | null = marshall(true)
         if (!model) {
             toast("Cannot save this fight, make sure you have a full fight definition (party + fight selected)")
             return
         }
-        let key: string;
-
-        if (model === "UNCHANGED") {
-            key = window.location.hash
-        } else {
-            key = (await model.store()) || window.location.hash
-        }
-        window.location.hash = key
+        window.location.hash = (await model.store()) || window.location.hash
         setFirstHash(window.location.hash)
         await copyLink()
     }

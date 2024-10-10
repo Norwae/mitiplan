@@ -41,12 +41,13 @@ function Application() {
         setDirty(false)
     }
 
-    function marshall() {
-        if (!dirty) {
+    function marshall(explicit?: boolean) {
+        if (!explicit && !dirty) {
             return "UNCHANGED"
         }
 
         if (fight && party) {
+            setDirty(false)
             return new PersistenceModel(party, actions, fight)
         } else {
             return null
