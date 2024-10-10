@@ -4,11 +4,13 @@ export class Fight {
     name: string
     code: string
     levelSync: number
+    partySize: number
 
-    constructor(name, code, levelSync) {
+    constructor(name: string, code: string, levelSync?: number, partySize?: number) {
         this.name = name
         this.code = code
-        this.levelSync = levelSync
+        this.levelSync = levelSync || 100
+        this.partySize = partySize || 8
     }
 
     async events(): Promise<CombatEvent[]> {
@@ -88,10 +90,10 @@ export interface CombatEvent {
 }
 
 export const fights: Fight[] = [
-    new Fight("Black Cat (M1S)", "M1S", 100),
-    new Fight("Honey B Lovely (M2S)", "M2S", 100),
-    new Fight("Brute Bomber (M3S)", "M3S", 100),
-    new Fight("Wicked Thunder (M4S)", "M4S", 100)
+    new Fight("Black Cat (M1S)", "M1S"),
+    new Fight("Honey B Lovely (M2S)", "M2S"),
+    new Fight("Brute Bomber (M3S)", "M3S"),
+    new Fight("Wicked Thunder (M4S)", "M4S")
 ]
 
 fights.byCode = (code) => fights.find((f) => f.code === code)

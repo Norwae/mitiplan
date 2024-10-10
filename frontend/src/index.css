@@ -17,40 +17,11 @@ body {
 @media (width < 1200px) {
     #main {
         display: grid;
-        grid-template-columns: 1fr 11fr;
+        grid-template-columns: 12fr;
         grid-template-areas: "fight" "jobs" "mitigationTable";
         gap: 5px;
         width: 100%;
     }
-}
-table#actionGrid {
-    border: thin solid;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-spacing: 0;
-}
-
-#actionGrid th {
-    border-bottom: thick solid;
-
-}
-
-#actionGrid th, #actionGrid td {
-    border-right: thin solid;
-    border-collapse: collapse;
-}
-
-#actionGrid tbody td {
-    border-bottom: thin solid;
-}
-
-#actionGrid th:last-of-type {
-    border-right: 0;
-}
-
-#actionGrid tr:last-of-type td {
-    border-bottom: 0;
 }
 #loader {
     display: none;
@@ -76,15 +47,6 @@ table#actionGrid {
     font-size: xxx-large;
     background: black;
     color: white;
-}
-
-span.action {
-    position: relative;
-    top: -4px;
-    font-size: 24pt;
-    font-weight: bold;
-    text-align: center;
-    opacity: 100%;
 }
 
 .persistenceControl {

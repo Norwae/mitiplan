@@ -23,6 +23,12 @@
         }
     }
     @media (width < 1200px) {
+        display: grid;
+        gap: 5px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        @media (width < 800px) {
+            grid-template-columns: 1fr 1fr;
+        }
         & li {
             display: block;
         }
@@ -30,9 +36,11 @@
             height: 1em;
         }
 
-        & .active span:after {
-            font-size: x-small;
-            content: " (x) ";
+        & .active {
+            & span:after {
+                font-size: x-small;
+                content: " \2705";
+            }
         }
     }
 }

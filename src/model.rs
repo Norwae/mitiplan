@@ -84,7 +84,7 @@ mod test {
 
     #[test]
     fn read_store(){
-        let result: serde_json::Result<Operation> = serde_json::from_str(r#"{"Store": {"code": "M1S", "actions": [{"ability": {"job": "VPR", "level": 50}, "timestamp": 0}]}}"#);
+        let result: serde_json::Result<Operation> = serde_json::from_str(r#"{"Store": {"party":[], "code": "M1S", "actions": [{"ability": {"job": "VPR", "level": 50}, "timestamp": 0}]}}"#);
         if let Ok(Operation::Store(fm)) = &result {
             assert_eq!(FightCode::M1S, fm.code);
             assert_eq!(Ability {
@@ -102,6 +102,7 @@ mod test {
         let vec = postcard::to_stdvec(&FightModel{
             key: None,
             code: FightCode::M1S,
+            party: vec![JobCode::DRK, JobCode::WAR, JobCode::AST, JobCode::SGE, JobCode::MNK, JobCode::VPR, JobCode::BLM, JobCode::MCH],
             actions: vec![
                 CombatAction {
                     ability: Ability {

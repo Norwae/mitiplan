@@ -47,7 +47,9 @@ class Application extends React.Component {
     }
 
     setParty(party: Job[]) {
-        if (party && party.length !== 8) {
+        let expectedPartySize = this.state.fight?.partySize || 8
+
+        if (party && party.length !== expectedPartySize) {
             party = null
         }
         this.setState({party, dirty: true})
@@ -117,7 +119,7 @@ class Application extends React.Component {
                                                          removeHandler={ca => this.removeAction(ca)}/> :
                         <div className="unreadyInfo">
                             <b>No fight / Party selected</b>
-                            <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>
+                            <p>Make sure you select exactly {this.state.fight?.partySize || 8} jobs, and a fight from the dropdown</p>
                         </div>
 
                     }</div>

@@ -1,10 +1,41 @@
 #primaryTableArea {
     grid-area: mitigationTable;
-    & th img {
-        width: 1em;
-    }
-    & .action,& .type,& .timestamp {
-        width: 100px;
+
+    & table#actionGrid {
+        width: 100%;
+        border: thin solid;
+        margin: 0;
+        padding: 0;
+        border-spacing: 0;
+        border-collapse: collapse;
+
+        & img {
+            width: 2em;
+            height: 2em;
+        }
+
+        & th {
+            border-bottom: thick solid;
+            border-right: thin solid;
+        }
+
+        & td {
+            border-bottom: thin solid;
+            border-right: thin solid;
+
+            &.action, &.type, &.timestamp {
+                width: 100px;
+            }
+        }
+
+        & th:last-of-type {
+            border-right: 0;
+        }
+
+        & tr:last-of-type td {
+            border-bottom: 0;
+        }
     }
 
 }
+
