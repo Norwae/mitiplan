@@ -50,10 +50,8 @@ export function PersistenceControl({marshall, unmarshall}) {
         } else {
             key = (await model.store()) || window.location.hash
         }
-        this.setState({
-            firstHash: key
-        })
         window.location.hash = key
+        setFirstHash(window.location.hash)
         await copyLink()
     }
 
