@@ -38,10 +38,6 @@ export function JobBar({party, onPartySelected}) {
             }
         }
 
-        if (newState && newCount > 8) {
-            return
-        }
-
         const newSelected = {
             ...selected,
             [code]: newState
