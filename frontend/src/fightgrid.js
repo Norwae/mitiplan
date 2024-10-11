@@ -2,7 +2,6 @@ import React, {useMemo, useState} from "react";
 import type {Ability} from "./jobs";
 
 import './fightgrid.css'
-import JobTimeline from "./jobtimeline";
 
 
 export class CombatAction {
@@ -14,10 +13,6 @@ export class CombatAction {
         this.timestamp = timestamp
         this.by = by;
         this.ability = ability
-    }
-
-    isEqual(other: CombatAction) {
-        return this.timestamp === other.timestamp && this.by === other.by && this.ability.atLevel === other.ability.atLevel
     }
 }
 
@@ -61,7 +56,7 @@ const JobTimelineColumn = React.memo(({timeline, fight, onUpdateTimeline}) => {
     </div>
 })
 
-export function FightActionGrid({events, level, timelines, onUpdateTimeline}) {
+export function FightActionGrid({events, timelines, onUpdateTimeline}) {
     return <div id="actionGrid">
         <div className="actionGridColumn metaColumn">
             <div>Event</div>

@@ -17,6 +17,10 @@
             height: 3em !important;
             text-wrap: nowrap;
             text-overflow: ellipsis;
+
+            &:first-of-type {
+                border-bottom: thin dashed black;
+            }
         }
     }
 }
