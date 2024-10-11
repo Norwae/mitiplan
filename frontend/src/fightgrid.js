@@ -51,7 +51,7 @@ function JobEventCell({timeline, event, onUpdateTimeline}) {
     </div>
 }
 
-const JobTimelineColumn = ({timeline, fight, onUpdateTimeline}) => {
+const JobTimelineColumn = React.memo(({timeline, fight, onUpdateTimeline}) => {
     return <div className="actionGridColumn jobColumn">
         <div><img alt={timeline.job.friendlyName} src={'./' + timeline.job.code + ".png"} className="jobIcon"/></div>
         {
@@ -59,7 +59,7 @@ const JobTimelineColumn = ({timeline, fight, onUpdateTimeline}) => {
                                                 onUpdateTimeline={onUpdateTimeline}/>)
         }
     </div>
-}
+})
 
 export function FightActionGrid({events, level, timelines, onUpdateTimeline}) {
     return <div id="actionGrid">

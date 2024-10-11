@@ -49,10 +49,6 @@ export default class JobTimeline {
     }
 
     removeAction(action: CombatAction): JobTimeline {
-        const idx = this.actions.indexOf(action)
-        if (idx === -1) {
-            return this
-        }
-        return new JobTimeline(this.job, this.level, this.actions.splice(idx, idx), this.abilities)
+        return new JobTimeline(this.job, this.level, this.actions.filter(({timestamp, ability}) => timestamp !== action.timestamp || ability !== action.ability), this.abilities)
     }
 }
