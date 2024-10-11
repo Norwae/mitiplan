@@ -71,5 +71,5 @@ export function PersistenceControl({marshall, unmarshall}) {
 }
 
 PersistenceControl.initialLoad = () => {
-    document.getElementById("resetButton").click()
+    document.getElementById("resetButton")?.click()
 }

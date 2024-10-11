@@ -12,31 +12,30 @@ import {PersistenceModel} from "./persistence";
 import {PersistenceControl} from './persistencecontrol'
 import {Toaster} from "react-hot-toast";
 import type {CombatEvent} from "./fights";
+import JobTimeline from "./jobtimeline";
 
 
 function Application() {
-    const [party, setParty] = useState(null)
     const [fight, setFight] = useState(null)
-    const [actions, setActions] = useState([])
     const [fightEvents, setFightEvents] = useState(null)
     const [loading, setLoading] = useState(true)
     const [dirty, setDirty] = useState(false)
+    const [actions, setActions] = useState(null)
+    const [party, setParty] = useState(null)
 
-    function addAction(action: CombatAction) {
-        setActions([action, ...actions])
-        setDirty(true)
-    }
 
-    function removeAction(action: CombatAction) {
-        setActions(actions.filter(a => a !== action))
-        setDirty(true)
-    }
-
-    async function initFight(fight: Fight, actions?: CombatAction[]) {
+    async function initFight(fight: Fight, party?: Job[], actions?: CombatAction[]) {
         setLoading(true)
         setFight(fight)
         setFightEvents(await fight.events())
-        setActions(actions || [])
+        setParty(party)
+
+        if (party?.length === 8) {
+            setActions(actions)
+        } else {
+            setActions(null)
+        }
+
         setLoading(false)
         setDirty(false)
     }
@@ -58,12 +57,11 @@ function Application() {
         setLoading(true)
 
         const {fight, party, actions} = data;
-        setParty(party)
-        await initFight(fight, actions)
+        await initFight(fight, party, actions)
     }
 
     function canRender(): boolean {
-        return party && fightEvents && fight
+        return party?.length === 8 && fightEvents && fight
     }
 
     return <div id="approot">
@@ -75,13 +73,19 @@ function Application() {
             <PersistenceControl marshall={marshall}
                                 unmarshall={unmarshall}/>
             <FightSelector onFightSelected={f => initFight(f)} selected={fight}/>
-            <JobBar onPartySelected={p => setParty(p)} party={party}/>
+            <JobBar onPartySelected={p => initFight(fight, p)} party={party}/>
             <div id="primaryTableArea">
-                {canRender() ? <FightActionGrid fight={fightEvents} jobs={party}
-                                                     actions={actions}
-                                                     levelSync={fight.levelSync}
-                                                     addHandler={ca => addAction(ca)}
-                                                     removeHandler={ca => removeAction(ca)}/> :
+                {canRender() ?
+                    <FightActionGrid level={fight.levelSync} events={fightEvents} party={party} onAddAction={action =>{
+                        setActions((actions || []).concat([action]))
+                    }} onRemoveAction={action => {
+                        const idx = actions?.indexOf(action)
+                        if (idx >= 0) {
+                            setActions(actions?.splice(idx, idx))
+                        }
+                    }}
+                    actions={actions}
+                    /> :
                     <div className="unreadyInfo">
                         <b>No fight / Party selected</b>
                         <p>Make sure you select exactly 8 jobs, and a fight from the dropdown</p>

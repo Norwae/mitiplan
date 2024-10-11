@@ -1,6 +1,25 @@
 #primaryTableArea {
     grid-area: mitigationTable;
 
+    & img.jobIcon {
+        width: 2em;
+        height: 2em;
+    }
+    & img.damageIndicator {
+        width: 8px;
+        height: 8px;
+    }
+
+    & div#actionGrid {
+        display: grid;
+        grid-template-columns: 1fr  1fr 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr;
+        & div {
+            height: 3em !important;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
     & table#actionGrid {
         width: 100%;
         border: thin solid;
@@ -12,10 +31,6 @@
         & img {
             width: 2em;
             height: 2em;
-            &.damageIndicator {
-                width: 8px;
-                height: 8px;
-            }
         }
 
         & th {

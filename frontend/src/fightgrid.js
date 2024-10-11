@@ -2,6 +2,7 @@ import React, {useMemo, useState} from "react";
 import type {Ability} from "./jobs";
 
 import './fightgrid.css'
+import JobTimeline from "./jobtimeline";
 
 
 export class CombatAction {
@@ -14,6 +15,10 @@ export class CombatAction {
         this.by = by;
         this.ability = ability
     }
+
+    isEqual(other: CombatAction) {
+        return this.timestamp === other.timestamp && this.by === other.by && this.ability.atLevel === other.ability.atLevel
+    }
 }
 
 function SelectableActions({actions, handler}) {
@@ -24,89 +29,69 @@ function SelectableActions({actions, handler}) {
     })}</span>
 }
 
-function JobActionCell({actions, level, job, combatEvent, addHandler, removeHandler}) {
-    const [addOverlayVisible, setAddOverlayVisible] = useState(false)
-    function calculateActions(): [CombatAction[], CombatAction[]] {
-        const myActions = actions.filter(({timestamp, by}) => timestamp === combatEvent.timestamp && by === job.code)
-        const learnedActions = job.actions
-            .filter(action => action.atLevel <= level)
-        const evolvedActions = learnedActions.map(action => {
-            while (action.evolution) {
-                if (action.evolution.atLevel > level) {
-                    return action
-                }
-
-                action = action.evolution
-            }
-            return action
-        })
-        const potentialActions = evolvedActions.filter(action => {
-            const found = actions.filter(({timestamp, by, ability}) => {
-                const deltaT = timestamp - combatEvent.timestamp
-                return by === job.code && ability === action && deltaT >= -ability.cooldownSeconds && deltaT <= ability.cooldownSeconds
-            }).length
-
-            return action.charges > found
-        }).map(action => ({
-            timestamp: combatEvent.timestamp,
-            by: job.code,
-            ability: action
-        }))
-        return [myActions, potentialActions]
-    }
-
-    const [myActions, potentialActions] = useMemo(calculateActions, [actions, job, combatEvent])
-
-    return <span>
-            <SelectableActions actions={myActions} handler={removeHandler}/>
-        {addOverlayVisible ?
-            <div className="addOverlay">
-                <SelectableActions actions={potentialActions} handler={action => {
-                    addHandler(action)
-                    setAddOverlayVisible(false)
-                }}/>
-                <span className="action cancelAdd"
-                      onClick={() => setAddOverlayVisible(false)}>&#8854;</span>
-            </div> :
-            <span className="action add" onClick={() => setAddOverlayVisible(true)}>&#8853;</span>
-        }
-        </span>;
-}
-
-
 const formatTime = (seconds) => Math.floor(seconds / 60) + ":" + ("0" + (seconds % 60)).slice(-2)
 
-export function FightActionGrid({jobs, fight, levelSync,actions, addHandler, removeHandler}) {
-    return <table id="actionGrid">
-        <thead>
-        <tr>
-            <th className="action">Event</th>
-            <th className="timestamp">Time</th>
-            <th className="type">Damage</th>
-            {jobs.map(({code, friendlyName}) => <th key={code}><img alt={friendlyName} src={'./' + code + ".png"}/></th>)}
-        </tr>
-        </thead>
-        <tbody>
-        {fight.map((event, idx) => {
-            return <tr key={"_" + idx}>
-                <td className="action">{event.name}</td>
-                <td className="timestamp">{formatTime(event.timestamp)}</td>
-                <td className="type">{event.rawDamage > 0 && event.damageType !== "AVOIDABLE" ?
-                    <span>{event.rawDamage}<img alt={event.damageType} src={"/DMG_" + event.damageType + ".png"}
-                                                className="damageIndicator"/></span> : ""}</td>
-                {jobs.map(job => {
-                    return <td className="abilityCell" key={job.code}>
-                        <JobActionCell combatEvent={event} job={job}
-                                       level={levelSync}
-                                       actions={actions}
-                                       addHandler={addHandler}
-                                       removeHandler={removeHandler}
-                        />
-                    </td>
-                })}
-            </tr>
-        })}
-        </tbody>
-    </table>;
+function JobEventCell({timeline, event, onAddAction, onRemoveAction}) {
+    const [expanded, setExpanded] = useState(false)
+    const actions = timeline.actionsAt(event.timestamp);
+    return <div>
+        <SelectableActions actions={actions} handler={onRemoveAction}/>
+        {expanded ?
+            <div className="addOverlay">
+                <SelectableActions
+                    actions={timeline.availableAbilities(event.timestamp).map(ability => new CombatAction(event.timestamp, timeline.job.code, ability))}
+                    handler={action => {
+                        onAddAction(action)
+                        setExpanded(false)
+                    }}/>
+                <span className="action cancelAdd"
+                      onClick={() => setExpanded(false)}>&#8854;</span>
+            </div> :
+            <span className="action add" onClick={() => setExpanded(true)}>&#8853;</span>}
+    </div>
+}
+
+const JobTimelineColumn = ({timeline, fight, onAddAction, onRemoveAction}) => {
+    return <div className="actionGridColumn jobColumn">
+        <div><img alt={timeline.job.friendlyName} src={'./' + timeline.job.code + ".png"} className="jobIcon"/></div>
+        {
+            fight.map((evt, i) => <JobEventCell key={i} timeline={timeline} event={evt}
+                                                onAddAction={onAddAction} onRemoveAction={onRemoveAction}/>)
+        }
+    </div>
+}
+
+export function FightActionGrid({party, actions, events, level, onAddAction, onRemoveAction}) {
+    return <div id="actionGrid">
+        <div className="actionGridColumn metaColumn">
+            <div>Event</div>
+            {
+                events.map(({name}, i) => <div key={i}>{name}</div>)
+            }
+        </div>
+        <div className="actionGridColumn metaColumn">
+            <div>Time</div>
+            {
+                events.map(({timestamp}, i) => <div key={i}>{formatTime(timestamp)}</div>)
+            }
+        </div>
+        <div className="actionGridColumn metaColumn">
+            <div>Damage</div>
+            {
+                events.map(({rawDamage, damageType}, i) => {
+                    if (rawDamage > 0 && damageType !== "AVOIDABLE") {
+                        return <div key={i}>{rawDamage}<img alt={damageType} src={"/DMG_" + damageType + ".png"}
+                                                            className="damageIndicator"/></div>
+                    } else {
+                        return <div key={i}/>
+                    }
+                })
+            }
+        </div>
+        {
+            party.map(job => <JobTimelineColumn key={job.code} timeline={new JobTimeline(job, level, actions)} fight={events}
+                                                onAddAction={onAddAction} onRemoveAction={onRemoveAction}/>)
+        }
+    </div>
 }
 
