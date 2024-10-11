@@ -4,6 +4,7 @@ import HoverBubble from "./hoverbubble";
 import './persistencecontrol.css'
 import {toast} from "react-hot-toast";
 import {PersistenceModel} from "./persistence";
+import {fights} from "./fights";
 
 export function PersistenceControl({marshall, unmarshall}) {
     const [firstHash, setFirstHash] = useState(window.location.hash)
@@ -26,6 +27,8 @@ export function PersistenceControl({marshall, unmarshall}) {
                 console.log("Loading / unmarshalling plan failed", e)
                 window.location.hash = ""
             }
+        } else {
+            unmarshall(new PersistenceModel(null, [], fights[0]))
         }
     }
 

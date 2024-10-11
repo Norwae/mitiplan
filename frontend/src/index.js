@@ -16,10 +16,10 @@ import type {CombatEvent} from "./fights";
 
 function Application() {
     const [party, setParty] = useState(null)
-    const [fight, setFight] = useState(fights[0])
+    const [fight, setFight] = useState(null)
     const [actions, setActions] = useState([])
-    const [fightEvents, setFightEvents] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [fightEvents, setFightEvents] = useState(null)
+    const [loading, setLoading] = useState(true)
     const [dirty, setDirty] = useState(false)
 
     function addAction(action: CombatAction) {

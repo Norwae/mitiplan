@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import type {Ability} from "./jobs";
 
 import './fightgrid.css'
@@ -26,32 +26,37 @@ function SelectableActions({actions, handler}) {
 
 function JobActionCell({actions, level, job, combatEvent, addHandler, removeHandler}) {
     const [addOverlayVisible, setAddOverlayVisible] = useState(false)
+    function calculateActions(): [CombatAction[], CombatAction[]] {
+        const myActions = actions.filter(({timestamp, by}) => timestamp === combatEvent.timestamp && by === job.code)
+        const learnedActions = job.actions
+            .filter(action => action.atLevel <= level)
+        const evolvedActions = learnedActions.map(action => {
+            while (action.evolution) {
+                if (action.evolution.atLevel > level) {
+                    return action
+                }
 
-    const myActions = actions.filter(({timestamp, by}) => timestamp === combatEvent.timestamp && by === job.code)
-    const learnedActions = job.actions
-        .filter(action => action.atLevel <= level)
-    const evolvedActions = learnedActions.map(action => {
-        while (action.evolution) {
-            if (action.evolution.atLevel > level) {
-                return action
+                action = action.evolution
             }
+            return action
+        })
+        const potentialActions = evolvedActions.filter(action => {
+            const found = actions.filter(({timestamp, by, ability}) => {
+                const deltaT = timestamp - combatEvent.timestamp
+                return by === job.code && ability === action && deltaT >= -ability.cooldownSeconds && deltaT <= ability.cooldownSeconds
+            }).length
 
-            action = action.evolution
-        }
-        return action
-    })
-    const potentialActions = evolvedActions.filter(action => {
-        const found = actions.filter(({timestamp, by, ability}) => {
-            const deltaT = timestamp - combatEvent.timestamp
-            return by === job.code && ability === action && deltaT >= -ability.cooldownSeconds && deltaT <= ability.cooldownSeconds
-        }).length
+            return action.charges > found
+        }).map(action => ({
+            timestamp: combatEvent.timestamp,
+            by: job.code,
+            ability: action
+        }))
+        return [myActions, potentialActions]
+    }
 
-        return action.charges > found
-    }).map(action => ({
-        timestamp: combatEvent.timestamp,
-        by: job.code,
-        ability: action
-    }))
+    const [myActions, potentialActions] = useMemo(calculateActions, [actions, job, combatEvent])
+
     return <span>
             <SelectableActions actions={myActions} handler={removeHandler}/>
         {addOverlayVisible ?
@@ -78,7 +83,7 @@ export function FightActionGrid({jobs, fight, levelSync,actions, addHandler, rem
             <th className="action">Event</th>
             <th className="timestamp">Time</th>
             <th className="type">Damage</th>
-            {jobs.map(({code}) => <th key={code}><img src={'./' + code + ".png"}/></th>)}
+            {jobs.map(({code, friendlyName}) => <th key={code}><img alt={friendlyName} src={'./' + code + ".png"}/></th>)}
         </tr>
         </thead>
         <tbody>
