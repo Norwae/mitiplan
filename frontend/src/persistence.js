@@ -4,6 +4,7 @@ import {Job, jobs} from "./jobs";
 import {fights} from "./fights";
 
 const backend = " https://oyw5rhxoy4.execute-api.us-east-1.amazonaws.com/mitisheet-backend"
+
 export function PersistenceModel(party: Job[], actions: CombatAction[], fight: Fight) {
     this.party = party
     this.actions = actions
