@@ -48,7 +48,6 @@ export function PersistenceControl({marshall, unmarshall}) {
         }
         window.location.hash = (await model.store()) || window.location.hash
         setFirstHash(window.location.hash)
-        await copyLink()
     }
 
     async function copyLink() {

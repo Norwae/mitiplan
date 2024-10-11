@@ -20,20 +20,21 @@ function Application() {
     const [fightEvents, setFightEvents] = useState(null)
     const [loading, setLoading] = useState(true)
     const [dirty, setDirty] = useState(false)
-    const [actions, setActions] = useState(null)
-    const [party, setParty] = useState(null)
+    const [timelines, setTimelines] = useState(null)
 
 
     async function initFight(fight: Fight, party?: Job[], actions?: CombatAction[]) {
         setLoading(true)
         setFight(fight)
         setFightEvents(await fight.events())
-        setParty(party)
 
         if (party?.length === 8) {
-            setActions(actions)
+            setTimelines(party.reduce((acc, job) => ({
+                ...acc,
+                [job.code]: new JobTimeline(job, fight.levelSync, actions)
+            }), {}))
         } else {
-            setActions(null)
+            setTimelines(null)
         }
 
         setLoading(false)
@@ -45,9 +46,9 @@ function Application() {
             return "UNCHANGED"
         }
 
-        if (fight && party) {
+        if (fight && timelines) {
             setDirty(false)
-            return new PersistenceModel(party, actions, fight)
+            return new PersistenceModel(party(), actions(), fight)
         } else {
             return null
         }
@@ -61,7 +62,16 @@ function Application() {
     }
 
     function canRender(): boolean {
-        return party?.length === 8 && fightEvents && fight
+        return timelines && fightEvents && fight
+    }
+
+    function party() {
+        if (!timelines) return null
+        return Object.keys(timelines).map(code => timelines[code].job);
+    }
+
+    function actions() {
+        return party()?.reduce((acc, job) => acc.concat(timelines[job.code].actions), [])
     }
 
     return <div id="approot">
@@ -73,18 +83,16 @@ function Application() {
             <PersistenceControl marshall={marshall}
                                 unmarshall={unmarshall}/>
             <FightSelector onFightSelected={f => initFight(f)} selected={fight}/>
-            <JobBar onPartySelected={p => initFight(fight, p)} party={party}/>
+            <JobBar onPartySelected={p => initFight(fight, p)} party={party()}/>
             <div id="primaryTableArea">
                 {canRender() ?
-                    <FightActionGrid level={fight.levelSync} events={fightEvents} party={party} onAddAction={action =>{
-                        setActions((actions || []).concat([action]))
-                    }} onRemoveAction={action => {
-                        const idx = actions?.indexOf(action)
-                        if (idx >= 0) {
-                            setActions(actions?.splice(idx, idx))
-                        }
-                    }}
-                    actions={actions}
+                    <FightActionGrid level={fight.levelSync} events={fightEvents} timelines={timelines}
+                                     onUpdateTimeline={tl => {
+                                         setTimelines({
+                                             ...timelines,
+                                             [tl.job.code]: tl
+                                         })
+                                     }}
                     /> :
                     <div className="unreadyInfo">
                         <b>No fight / Party selected</b>

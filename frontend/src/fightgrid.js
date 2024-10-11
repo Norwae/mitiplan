@@ -31,17 +31,17 @@ function SelectableActions({actions, handler}) {
 
 const formatTime = (seconds) => Math.floor(seconds / 60) + ":" + ("0" + (seconds % 60)).slice(-2)
 
-function JobEventCell({timeline, event, onAddAction, onRemoveAction}) {
+function JobEventCell({timeline, event, onUpdateTimeline}) {
     const [expanded, setExpanded] = useState(false)
     const actions = timeline.actionsAt(event.timestamp);
     return <div>
-        <SelectableActions actions={actions} handler={onRemoveAction}/>
+        <SelectableActions actions={actions} handler={action => onUpdateTimeline(timeline.removeAction(action))}/>
         {expanded ?
             <div className="addOverlay">
                 <SelectableActions
                     actions={timeline.availableAbilities(event.timestamp).map(ability => new CombatAction(event.timestamp, timeline.job.code, ability))}
                     handler={action => {
-                        onAddAction(action)
+                        onUpdateTimeline(timeline.addAction(action))
                         setExpanded(false)
                     }}/>
                 <span className="action cancelAdd"
@@ -51,17 +51,17 @@ function JobEventCell({timeline, event, onAddAction, onRemoveAction}) {
     </div>
 }
 
-const JobTimelineColumn = ({timeline, fight, onAddAction, onRemoveAction}) => {
+const JobTimelineColumn = ({timeline, fight, onUpdateTimeline}) => {
     return <div className="actionGridColumn jobColumn">
         <div><img alt={timeline.job.friendlyName} src={'./' + timeline.job.code + ".png"} className="jobIcon"/></div>
         {
             fight.map((evt, i) => <JobEventCell key={i} timeline={timeline} event={evt}
-                                                onAddAction={onAddAction} onRemoveAction={onRemoveAction}/>)
+                                                onUpdateTimeline={onUpdateTimeline}/>)
         }
     </div>
 }
 
-export function FightActionGrid({party, actions, events, level, onAddAction, onRemoveAction}) {
+export function FightActionGrid({events, level, timelines, onUpdateTimeline}) {
     return <div id="actionGrid">
         <div className="actionGridColumn metaColumn">
             <div>Event</div>
@@ -89,8 +89,8 @@ export function FightActionGrid({party, actions, events, level, onAddAction, onR
             }
         </div>
         {
-            party.map(job => <JobTimelineColumn key={job.code} timeline={new JobTimeline(job, level, actions)} fight={events}
-                                                onAddAction={onAddAction} onRemoveAction={onRemoveAction}/>)
+            Object.keys(timelines).map(jobCode => <JobTimelineColumn key={jobCode} timeline={timelines[jobCode]} fight={events}
+                                                onUpdateTimeline={onUpdateTimeline}/>)
         }
     </div>
 }

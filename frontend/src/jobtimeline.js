@@ -1,5 +1,6 @@
 import type {CombatAction} from "./fightgrid";
 import type {Ability} from "./jobs";
+import {Job} from "./jobs";
 
 export default class JobTimeline {
     actions: CombatAction[]
@@ -7,14 +8,14 @@ export default class JobTimeline {
     level: number
     abilities: Ability[]
 
-    constructor(job: Job, level: number, actions?: CombatAction[]) {
+    constructor(job: Job, level: number, actions?: CombatAction[], abilities?: Ability[]) {
         this.actions = (actions || []).filter(({by}) => by === job.code)
         this.job = job
         this.level = level
 
         const learned = job.actions
             .filter(action => action.atLevel <= level)
-        this.abilities = learned.map(action => {
+        this.abilities = abilities || learned.map(action => {
             while (action.evolution) {
                 if (action.evolution.atLevel > level) {
                     return action
@@ -25,12 +26,6 @@ export default class JobTimeline {
             return action
         })
 
-    }
-
-    isEqual(other: JobTimeline) {
-        return other.job.code === this.job.code &&
-            other.actions.length === this.actions.length &&
-            other.actions.reduce((acc, action, idx) => acc && this.actions[idx].isEqual(action), true)
     }
 
     availableAbilities(atTimestamp: number): Ability[] {
@@ -48,4 +43,16 @@ export default class JobTimeline {
         return this.actions.filter(({timestamp}) => timestamp === atTimestamp)
     }
 
+
+    addAction(action: CombatAction): JobTimeline {
+        return new JobTimeline(this.job, this.level, this.actions.concat([action]), this.abilities)
+    }
+
+    removeAction(action: CombatAction): JobTimeline {
+        const idx = this.actions.indexOf(action)
+        if (idx === -1) {
+            return this
+        }
+        return new JobTimeline(this.job, this.level, this.actions.splice(idx, idx), this.abilities)
+    }
 }
